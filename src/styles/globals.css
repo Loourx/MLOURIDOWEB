@@ -1,0 +1,677 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  font-family: 'IBM Plex Mono', monospace;
+  --font-size: 16px;
+  --background: #ffffff;
+  --foreground: oklch(0.145 0 0);
+  --card: #ffffff;
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: #030213;
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.95 0.0058 264.53);
+  --secondary-foreground: #030213;
+  --muted: #ececf0;
+  --muted-foreground: #717182;
+  --accent: #e9ebef;
+  --accent-foreground: #030213;
+  --destructive: #d4183d;
+  --destructive-foreground: #ffffff;
+  --border: rgba(0, 0, 0, 0.1);
+  --input: transparent;
+  --input-background: #f3f3f5;
+  --switch-background: #cbced4;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: #030213;
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.269 0 0);
+  --input: oklch(0.269 0 0);
+  --ring: oklch(0.439 0 0);
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    outline-color: color-mix(in srgb, var(--ring) 50%, transparent);
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/**
+ * Base typography. This is not applied to elements which have an ancestor with a Tailwind text class.
+ */
+@layer base {
+  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) {
+    h1 {
+      font-size: var(--text-2xl);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h2 {
+      font-size: var(--text-xl);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h3 {
+      font-size: var(--text-lg);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    h4 {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    p {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+
+    label {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    button {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    input {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+  }
+}
+
+html {
+  font-size: var(--font-size);
+}
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+[data-reveal="true"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.tech-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.tech-badge-circle {
+  position: relative;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 9999px;
+  border: 2px solid #cbd0dd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.tech-badge-circle::before {
+  content: "";
+  position: absolute;
+  inset: 0.4rem;
+  border-radius: inherit;
+  border: 2px solid #e2e6f0;
+}
+
+.tech-badge-initials {
+  position: relative;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #111827;
+}
+
+.tech-badge-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #4b5563;
+}
+
+.learning-item {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.learning-item-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   NOTHING INDUSTRIAL RAW DESIGN SYSTEM
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Textura de ruido sutil para fondos */
+.noise-texture {
+  position: relative;
+}
+
+.noise-texture::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   HARDWARE OVERLAY - Píxeles estáticos estilo Nothing
+   El contenido se desliza SOBRE esta capa de "circuito impreso"
+   
+   Sistema de dos capas:
+   - Capa 1: Puntos grises sutiles (visibles sobre fondos claros)
+   - Capa 2: Puntos que se invierten sobre fondos oscuros
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* Capa principal - Puntos grises sutiles sobre fondos claros */
+.hardware-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+  
+  /* Cuadrícula muy dispersa - puntos casi invisibles */
+  background-image: radial-gradient(
+    circle,
+    #d0d0d0 1px,
+    transparent 1px
+  );
+  background-size: 140px 140px;
+  
+  /* Multiply hace que desaparezca sobre negro */
+  mix-blend-mode: multiply;
+}
+
+/* Capa secundaria - Puntos que aparecen sobre fondos oscuros */
+.hardware-overlay::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  
+  /* Misma cuadrícula pero con color oscuro */
+  background-image: radial-gradient(
+    circle,
+    #333333 1px,
+    transparent 1px
+  );
+  background-size: 140px 140px;
+  
+  /* Screen hace que desaparezca sobre blanco y aparezca sobre negro */
+  mix-blend-mode: screen;
+}
+
+/* Fallback para navegadores sin soporte */
+@supports not (mix-blend-mode: multiply) {
+  .hardware-overlay {
+    background-image: radial-gradient(
+      circle,
+      rgba(0, 0, 0, 0.06) 1px,
+      transparent 1px
+    );
+    mix-blend-mode: normal;
+  }
+  .hardware-overlay::after {
+    display: none;
+  }
+}
+
+/* Cruces de corte técnicas */
+.cut-mark {
+  position: relative;
+}
+
+.cut-mark::before,
+.cut-mark::after {
+  content: "+";
+  position: absolute;
+  font-family: 'Space Grotesk', monospace;
+  font-size: 10px;
+  color: rgba(0,0,0,0.2);
+  font-weight: 300;
+}
+
+.cut-mark::before {
+  top: -8px;
+  left: -8px;
+}
+
+.cut-mark::after {
+  bottom: -8px;
+  right: -8px;
+}
+
+/* Líneas técnicas de blueprint */
+.blueprint-line {
+  position: relative;
+}
+
+.blueprint-line::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,0,0,0.15) 10%, rgba(0,0,0,0.15) 90%, transparent);
+}
+
+/* Etiquetas de especificación técnica */
+.spec-label {
+  font-family: 'Space Grotesk', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.4);
+}
+
+/* Contenedor estilo ficha técnica */
+.tech-card {
+  border: 1px solid rgba(0,0,0,0.1);
+  position: relative;
+}
+
+.tech-card::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  border: 1px dashed rgba(0,0,0,0.08);
+  pointer-events: none;
+}
+
+/* Hover mecánico (instantáneo) */
+.hover-mechanical {
+  transition: none !important;
+}
+
+.hover-mechanical:hover {
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
+/* Hover glitch digital */
+.hover-glitch {
+  position: relative;
+  transition: transform 0.05s steps(1);
+}
+
+.hover-glitch:hover {
+  transform: translate(1px, -1px);
+}
+
+.hover-glitch::before {
+  content: attr(data-text);
+  position: absolute;
+  left: 2px;
+  top: 0;
+  color: cyan;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hover-glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: -2px;
+  top: 0;
+  color: magenta;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hover-glitch:hover::before,
+.hover-glitch:hover::after {
+  opacity: 0.4;
+}
+
+/* Marco de identificación (estilo badge/ID) */
+.id-frame {
+  border: 2px solid #000;
+  position: relative;
+}
+
+.id-frame::before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  right: 4px;
+  bottom: 4px;
+  border: 1px solid rgba(0,0,0,0.3);
+}
+
+/* Código de barras decorativo */
+.barcode {
+  display: flex;
+  gap: 1px;
+  height: 20px;
+  align-items: flex-end;
+}
+
+.barcode span {
+  background: #000;
+  width: 2px;
+}
+
+.barcode span:nth-child(odd) {
+  height: 100%;
+}
+
+.barcode span:nth-child(even) {
+  height: 70%;
+}
+
+.barcode span:nth-child(3n) {
+  width: 3px;
+}
+
+/* Indicador de coordenadas */
+.coords {
+  font-family: 'Space Grotesk', monospace;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: rgba(0,0,0,0.35);
+}
+
+/* Línea de tiempo en vivo */
+.live-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Space Grotesk', monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: rgba(0,0,0,0.5);
+}
+
+.live-indicator::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background: #00ff00;
+  border-radius: 50%;
+  animation: pulse-live 2s infinite;
+}
+
+@keyframes pulse-live {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* Grid estricto sin sombras */
+.strict-grid {
+  display: grid;
+  border: 1px solid rgba(0,0,0,0.12);
+}
+
+.strict-grid > * {
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+/* Número de sección estilo CAD */
+.section-index {
+  font-family: 'Space Grotesk', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: rgba(0,0,0,0.4);
+  border: 1px solid rgba(0,0,0,0.15);
+  padding: 4px 8px;
+  display: inline-block;
+}
+
+/* Contenedor de viewport técnico */
+.viewport-frame {
+  position: relative;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.viewport-frame::before {
+  content: "VIEWPORT";
+  position: absolute;
+  top: -10px;
+  left: 12px;
+  background: #f8f8f8;
+  padding: 0 8px;
+  font-family: 'Space Grotesk', monospace;
+  font-size: 8px;
+  letter-spacing: 0.15em;
+  color: rgba(0,0,0,0.3);
+}
+
+/* Efecto inversión rayos-X */
+.xray-hover {
+  position: relative;
+  overflow: hidden;
+}
+
+.xray-hover img {
+  transition: filter 0.15s steps(3);
+}
+
+.xray-hover:hover img {
+  filter: invert(1) contrast(1.2);
+}
+
+/* Dot matrix para fondos oscuros */
+.dot-matrix {
+  background-image: 
+    radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px);
+  background-size: 8px 8px;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   ANIMACIONES TÉCNICAS - Portrait hover effect (Nothing style)
+   ═══════════════════════════════════════════════════════════════════ */
+
+@keyframes slideRight {
+  0%, 100% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(300%);
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(600%);
+    opacity: 0;
+  }
+}
+
+@keyframes slideLeft {
+  0%, 100% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(-300%);
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-600%);
+    opacity: 0;
+  }
+}
+
+@keyframes slideDown {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(300%);
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(600%);
+    opacity: 0;
+  }
+}
+
+@keyframes slideUp {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-300%);
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-600%);
+    opacity: 0;
+  }
+}
