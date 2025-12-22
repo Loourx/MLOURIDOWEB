@@ -39,6 +39,11 @@ export const translations = {
     aboutBioTitle: 'About Me',
     aboutBioContent: 'Hi! I\'m Mario, an Industrial Design Engineer and Master\'s graduate with a multidisciplinary approach. My greatest strength lies in merging engineering precision with creative conceptualization, transforming complex challenges into tangible, viable products. My background spans from ideation through technical validation in real innovation environments.',
     
+    // HeroBio (Home teaser)
+    heroBioTitle: 'Mario Lourido',
+    heroBioPitch: 'Industrial Design Engineer specialized in automotive and strategic product development. Transforming complex challenges into tangible, viable products.',
+    aboutPageIntro: 'Full professional profile: experience, skills, education and technical specifications. Everything you need to know about my background and approach.',
+    
     aboutExperienceTitle: 'Professional Experience',
     aboutCompany: 'NAVANTIA S.A. S.M.E.',
     aboutCompanyRole: 'Digital Transformation Dept | 2024 - Present',
@@ -68,12 +73,29 @@ export const translations = {
     aboutEducation2: 'Bachelor\'s Degree in Industrial Design Engineering',
     aboutEducation2Date: '2021 – 2025 | UDC',
     
+    aboutAwardsTitle: 'Awards & Recognition',
+    aboutAward1Title: 'Next Pioneers 2025 Hackathon - Winner Team',
+    aboutAward1Description: 'Winner of the 4th edition hackathon alongside 3 teammates. Awarded a one-year contract at Navantia to develop the winning innovative idea.',
+    
     aboutDownloadCV: 'Download CV (PDF)',
     
     // Tech Stack
     techStackNumber: '[03] Tools & AI',
     techStackTitle: 'Tech Stack & AI Workflow',
     techStackDescription: 'Ecosystem of tools I use to research, conceptualize and carry projects to engineering phase, combining AI, collaborative software and technical modeling.',
+    techStackProductionLabel: 'PRODUCTION SYSTEM',
+    techStackToolsActive: 'TOOLS ACTIVE',
+    techStackPhase1Title: 'Research',
+    techStackPhase1Subtitle: 'Understand & Analyze',
+    techStackPhase2Title: 'Visualize',
+    techStackPhase2Subtitle: 'Generate & Iterate',
+    techStackPhase3Title: 'Engineer',
+    techStackPhase3Subtitle: 'Build & Validate',
+    techStackCertLabel: 'CERTIFICATIONS',
+    techStackCertVerified: 'VERIFIED',
+    techStackCert1: 'Mechanical Design',
+    techStackCert2: 'Professional Design',
+    techStackCert3: 'Surfacing Expert',
     
     // Tech Stack Categories
     techStackCategory1: '1. Research & Strategy',
@@ -92,6 +114,10 @@ export const translations = {
     learningNumber: '[04]',
     learningLabel: 'Seminars, Workshops & Courses',
     learningTitle: 'Continuous Learning',
+    learningTableCompany: 'COMPANY',
+    learningTableTitle: 'TITLE',
+    learningTableDuration: 'DURATION',
+    learningTableYear: 'YEAR',
     
     // Seminars
     seminar1Title: 'The Kaizen – Daysing Experience',
@@ -109,23 +135,23 @@ export const translations = {
     seminar7Title: 'Leadership and Team Management | Workshop-Seminar',
     seminar7Subtitle: 'Real Club Deportivo de La Coruña — Óscar Gilsanz González · Trainer',
     seminar8Title: 'Industrial Design, Reflection and Projection | Workshop - Seminar',
-    seminar8Subtitle: 'José Andrés Arias Pampín — Industrial Design Engineer',
+    seminar8Subtitle: 'FINSA S.A. — José Andrés Arias Pampín · Industrial Design Engineer',
     seminar9Title: 'Strategies and Tools in Product Management | Urban Mobility and Connectivity',
     seminar9Subtitle: 'CTAG — Javier Vázquez Jorge · Head Smart Mobility',
     seminar10Title: '3D Cars: Inside And Out | Blender Course',
     seminar10Subtitle: 'CGMasters — Chris Plush · Freelance 3D Artist and Blender Trainer',
     seminar11Title: 'Actros Procabin | Workshop-Seminar: Mobility, Transport and Sustainability',
-    seminar11Subtitle: 'Agustín Gimeno Babio · Sales Manager Retail & Jesús Calderón Montero · Product Manager Trucks',
+    seminar11Subtitle: 'Mercedes-Benz — Agustín Gimeno Babio · Sales Manager Retail & Jesús Calderón Montero · Product Manager Trucks',
     seminar12Title: 'Workshop on Personal Branding and Strategic Networking',
-    seminar12Subtitle: 'Fundación Venancio Salcines Cortizo — Belén Candal Romero · Training Consultant and Mentor',
+    seminar12Subtitle: 'Fundación Venancio Salcines + Cortizo — Belén Candal Romero · Training Consultant and Mentor',
     seminar13Title: 'Digital Simulations and Prototyping in Product Design',
-    seminar13Subtitle: 'Televisés — Esteban Carballido Couceiro · Design Manager',
+    seminar13Subtitle: 'Televés — Esteban Carballido Couceiro · Design Manager',
     seminar14Title: 'Legal and Safety Aspects in Products',
     seminar14Subtitle: 'TMC Cancela — José David Señarís · Project Management Director',
     seminar15Title: 'Artisanal Footwear Design and Production Seminar',
     seminar15Subtitle: 'Calzados LOSAL — Gonzalo López González & Gonzalo López Otero',
     seminar16Title: 'After EUDI | Seminar on Professional Projection and International Opportunities',
-    seminar16Subtitle: 'Dyson — Damián Calvo · Lead Industrial Designer',
+    seminar16Subtitle: 'Damián Calvo — Lead Industrial Designer (ex-Dyson)',
     
     // Contact
     contactTitle: 'Contact',
@@ -181,6 +207,11 @@ export const translations = {
     aboutBioTitle: 'Sobre mí',
     aboutBioContent: '¡Hola! Soy Mario, Ingeniero y Máster en Diseño Industrial con enfoque multidisciplinar. Mi mayor fortaleza radica en fusionar precisión técnica con creatividad conceptual, transformando desafíos complejos en productos tangibles y viables. Mi trayectoria abarca desde la conceptualización hasta validación técnica en entornos de innovación real.',
     
+    // HeroBio (Home teaser)
+    heroBioTitle: 'Mario Lourido',
+    heroBioPitch: 'Ingeniero en Diseño Industrial especializado en automoción y desarrollo estratégico de producto. Transformando desafíos complejos en productos tangibles y viables.',
+    aboutPageIntro: 'Perfil profesional completo: experiencia, habilidades, educación y especificaciones técnicas. Todo lo que necesitas saber sobre mi trayectoria y enfoque.',
+    
     aboutExperienceTitle: 'Experiencia Profesional',
     aboutCompany: 'NAVANTIA S.A. S.M.E.',
     aboutCompanyRole: 'Dep. Transformación Digital | 2024 - Presente',
@@ -198,24 +229,39 @@ export const translations = {
     
     aboutSoftSkillsTitle: 'Soft Skills',
     aboutSoftSkill1: 'Liderazgo de equipos multidisciplinares',
-    aboutSoftSkill2: 'Gestión ágil de proyectos',
+    aboutSoftSkill2: 'Gestión ágil de proyectos, metodología completa',
     aboutSoftSkill3: 'Comunicación efectiva y presentación',
     aboutSoftSkill4: 'Pensamiento crítico y resolución de problemas',
     aboutSoftSkill5: 'Adaptabilidad y aprendizaje continuo',
-    aboutSoftSkill6: 'Trabajo en equipo',
+    aboutSoftSkill6: 'Trabajo en equipo y en entornos colaborativos',
     
     aboutEducationTitle: 'Educación',
     aboutEducation1: 'Máster Universitario en Diseño Industrial',
     aboutEducation1Date: '2025 – Presente | UDC',
     aboutEducation2: 'Grado en Ingeniería en Diseño Industrial',
     aboutEducation2Date: '2021 – 2025 | UDC',
-    
-    aboutDownloadCV: 'Descargar CV (PDF)',
+        aboutAwardsTitle: 'Premios y Reconocimientos',
+    aboutAward1Title: 'Hackathon Next Pioneers 2025 - Equipo Ganador',
+    aboutAward1Description: 'Ganador de la 4ª edición del hackathon junto a 3 compañeros. Premiado con un contrato de un año en Navantia para desarrollar la idea ganadora innovadora.',
+        aboutDownloadCV: 'Descargar CV (PDF)',
     
     // Tech Stack
     techStackNumber: '[03] Herramientas e IA',
-    techStackTitle: 'Tech Stack & Workflow IA',
+    techStackTitle: 'Herramientas, Flujo de Trabajo + IA',
     techStackDescription: 'Ecosistema de herramientas que utilizo para investigar, conceptualizar y llevar proyectos a fase de ingeniería, combinando IA, software colaborativo y modelado técnico.',
+    techStackProductionLabel: 'SISTEMA DE PRODUCCIÓN',
+    techStackToolsActive: 'HERRAMIENTAS ACTIVAS',
+    techStackPhase1Title: 'Investigar',
+    techStackPhase1Subtitle: 'Comprender y Analizar',
+    techStackPhase2Title: 'Visualizar',
+    techStackPhase2Subtitle: 'Generar e Iterar',
+    techStackPhase3Title: 'Ingeniería',
+    techStackPhase3Subtitle: 'Construir y Validar',
+    techStackCertLabel: 'CERTIFICACIONES',
+    techStackCertVerified: 'VERIFICADAS',
+    techStackCert1: 'Diseño Mecánico',
+    techStackCert2: 'Diseño Profesional',
+    techStackCert3: 'Experto en Superficies',
     
     // Tech Stack Categories
     techStackCategory1: '1. Investigación & Estrategia',
@@ -234,6 +280,10 @@ export const translations = {
     learningNumber: '[04]',
     learningLabel: 'Seminarios, Talleres y Cursos',
     learningTitle: 'Aprendizaje Continuo',
+    learningTableCompany: 'EMPRESA',
+    learningTableTitle: 'TÍTULO',
+    learningTableDuration: 'DURACIÓN',
+    learningTableYear: 'AÑO',
     
     // Seminars
     seminar1Title: 'The Kaizen – Daysing Experience',
@@ -251,23 +301,23 @@ export const translations = {
     seminar7Title: 'Liderazgo y Gestión de Equipos | Taller-Seminario',
     seminar7Subtitle: 'Real Club Deportivo de La Coruña — Óscar Gilsanz González · Entrenador',
     seminar8Title: 'El Diseño Industrial, reflejo y proyección | Taller - Seminario',
-    seminar8Subtitle: 'José Andrés Arias Pampín — Ingeniero en Diseño Industrial',
+    seminar8Subtitle: 'FINSA S.A. — José Andrés Arias Pampín · Ingeniero en Diseño Industrial',
     seminar9Title: 'Estrategias y Herramientas en la Gestión de Producto | Movilidad Urbana y Conectividad',
     seminar9Subtitle: 'CTAG — Javier Vázquez Jorge · Head Smart Mobility',
     seminar10Title: '3D Cars: Inside And Out | Blender Course',
     seminar10Subtitle: 'CGMasters — Chris Plush · Freelance 3D Artist and Blender Trainer',
     seminar11Title: 'Actros Procabin | Taller-Seminario: Movilidad, Transporte y Sostenibilidad',
-    seminar11Subtitle: 'Agustín Gimeno Babio · Gerente Ventas Retail & Jesús Calderón Montero · Product Manager Trucks',
+    seminar11Subtitle: 'Mercedes-Benz — Agustín Gimeno Babio · Gerente Ventas Retail & Jesús Calderón Montero · Product Manager Trucks',
     seminar12Title: 'Taller sobre marca personal y Networking Estratégico',
-    seminar12Subtitle: 'Fundación Venancio Salcines Cortizo — Belén Candal Romero · Consultora en formación y Mentora',
+    seminar12Subtitle: 'Fundación Venancio Salcines + Cortizo — Belén Candal Romero · Consultora en formación y Mentora',
     seminar13Title: 'Simulaciones y Prototipados Digitales en el Diseño de Productos',
-    seminar13Subtitle: 'Televisés — Esteban Carballido Couceiro · Responsable de Diseño',
+    seminar13Subtitle: 'Televés — Esteban Carballido Couceiro · Responsable de Diseño',
     seminar14Title: 'Aspectos Legales y de Seguridad en los Productos',
     seminar14Subtitle: 'TMC Cancela — José David Señarís · Director de Gestión de Proyectos',
     seminar15Title: 'Seminario de Diseño y Producción de Calzado Artesano',
     seminar15Subtitle: 'Calzados LOSAL — Gonzalo López González & Gonzalo López Otero',
     seminar16Title: 'After EUDI | Seminario sobre proyección profesional y salidas internacionales',
-    seminar16Subtitle: 'Dyson — Damián Calvo · Lead Industrial Designer',
+    seminar16Subtitle: 'Damián Calvo — Lead Industrial Designer (ex-Dyson)',
     
     // Contact
     contactTitle: 'Contacto',

@@ -3,20 +3,22 @@ import { useLanguage } from '../context/LanguageContext';
 import { getTranslation } from '../data/translations';
 
 const seminars = [
-  { key: 'seminar1', hours: '2H', year: '2025' },
-  { key: 'seminar2', hours: '8H', year: '2025' },
-  { key: 'seminar3', hours: '5H', year: '2025' },
-  { key: 'seminar4', hours: '4H', year: '2025' },
-  { key: 'seminar5', hours: '8H', year: '2025' },
-  { key: 'seminar6', hours: '4H', year: '2025' },
-  { key: 'seminar7', hours: '1.5H', year: '2025' },
-  { key: 'seminar8', hours: '2H', year: '2025' },
-  { key: 'seminar9', hours: '4H', year: '2025' },
-  { key: 'seminar10', hours: '45H', year: '2025' },
-  { key: 'seminar11', hours: '8H', year: '2025' },
-  { key: 'seminar12', hours: '4H', year: '2025' },
-  { key: 'seminar13', hours: '4H', year: '2024' },
-  { key: 'seminar14', hours: '8H', year: '2023' },
+  { key: 'seminar1', hours: '2H', year: '2025', image: '/images/seminars/kaizen-logo.png?v=1340' },
+  { key: 'seminar2', hours: '8H', year: '2025', image: '/images/seminars/evmetal-logo.png?v=1340' },
+  { key: 'seminar3', hours: '5H', year: '2025', image: '/images/seminars/bimbaylola-logo.png?v=1340' },
+  { key: 'seminar4', hours: '4H', year: '2025', image: '/images/seminars/ctag-logo.png?v=1340' },
+  { key: 'seminar5', hours: '8H', year: '2025', image: '/images/seminars/antoniomoar-logo.png?v=1340' },
+  { key: 'seminar6', hours: '4H', year: '2025', image: '/images/seminars/prosegur-logo.png?v=1340' },
+  { key: 'seminar7', hours: '1.5H', year: '2025', image: '/images/seminars/deportivo-logo.png?v=1340' },
+  { key: 'seminar8', hours: '2H', year: '2025', image: '/images/seminars/finsa-logo.png?v=1340' },
+  { key: 'seminar9', hours: '4H', year: '2025', image: '/images/seminars/ctag-logo-copy.png?v=1340' },
+  { key: 'seminar10', hours: '45H', year: '2025', image: '/images/seminars/blender-logo.png?v=1340' },
+  { key: 'seminar11', hours: '8H', year: '2025', image: '/images/seminars/mercedes-logo.png?v=1340' },
+  { key: 'seminar12', hours: '4H', year: '2025', image: '/images/seminars/cortizo-logo.png?v=1340' },
+  { key: 'seminar13', hours: '4H', year: '2024', image: '/images/seminars/televes-logo.png?v=1340' },
+  { key: 'seminar14', hours: '8H', year: '2023', image: '/images/seminars/tmccancela-logo.png?v=1340' },
+  { key: 'seminar15', hours: '4H', year: '2023', image: '/images/seminars/losal-logo.png?v=1340' },
+  { key: 'seminar16', hours: '4H', year: '2023', image: '/images/seminars/dyson-logo.png?v=1340' },
 ];
 
 export default function ContinuousLearning() {
@@ -70,7 +72,7 @@ export default function ContinuousLearning() {
           data-reveal-delay="120ms"
           className="text-3xl md:text-5xl font-mono font-bold tracking-tight mb-4"
         >
-          {language === 'en' ? 'Continuous' : 'Aprendizaje'} <span className="text-gray-500">{language === 'en' ? 'Learning' : 'Continuo'}</span>
+          {language === 'en' ? 'Seminars, Courses' : 'Seminarios, Cursos'} <span className="text-gray-500">{language === 'en' ? '& Workshops' : 'y Talleres'}</span>
         </h2>
         
         {/* Stats bar */}
@@ -94,50 +96,86 @@ export default function ContinuousLearning() {
         {/* Lista de seminarios */}
         <div className="border border-white/10">
           {/* Header de tabla */}
-          <div className="hidden md:grid md:grid-cols-[1fr,100px,80px] gap-4 px-4 py-3 bg-white/5 border-b border-white/10 text-sm font-mono text-gray-300 uppercase tracking-widest">
-            <span>COURSE_TITLE</span>
-            <span className="text-right">DURATION</span>
-            <span className="text-right">YEAR</span>
+          <div className="hidden md:grid md:grid-cols-[140px,1fr,100px,80px] gap-4 px-4 py-3 bg-white/5 border-b border-white/10 text-sm font-mono text-gray-300 uppercase tracking-widest">
+            <span className="text-center">{getTranslation(language, 'learningTableCompany')}</span>
+            <span>{getTranslation(language, 'learningTableTitle')}</span>
+            <span className="text-right">{getTranslation(language, 'learningTableDuration')}</span>
+            <span className="text-right">{getTranslation(language, 'learningTableYear')}</span>
           </div>
           
-          {seminars.map((item, index) => (
+          {seminars.map((item, index) => {
+            // Parsear el subtitle para separar empresa/persona del rol
+            const subtitle = getTranslation(language, `${item.key}Subtitle`);
+            const parts = subtitle.split(' — ');
+            const organization = parts[0] || '';
+            const instructor = parts[1] || '';
+            
+            return (
             <article
               key={item.key}
               ref={(el) => (itemsRef.current[index] = el)}
               className="learning-item group border-b border-white/5 last:border-b-0 hover:bg-white/5 transition-colors duration-75"
             >
-              <div className="grid grid-cols-1 md:grid-cols-[1fr,100px,80px] gap-2 md:gap-4 px-4 py-4 items-center">
-                {/* Título y subtítulo */}
+              <div className="grid grid-cols-1 md:grid-cols-[140px,1fr,100px,80px] gap-2 md:gap-4 px-4 py-5 items-start">
+                
+                {/* Logo - Marco rectangular con imagen */}
+                <div className="hidden md:flex justify-center items-start pt-1">
+                  <div className="w-32 h-16 border border-white/20 p-1 flex items-center justify-center bg-neutral-900">
+                    <img 
+                      src={item.image}
+                      alt={`${organization} logo`}
+                      className="w-full h-full object-contain opacity-80 group-hover:opacity-100 transition-opacity duration-75"
+                      onError={(e) => {
+                        // Fallback si la imagen no existe
+                        e.target.style.display = 'none';
+                        e.target.parentElement.innerHTML = `<span class="text-[10px] font-mono text-gray-700">${organization.substring(0, 3).toUpperCase()}</span>`;
+                      }}
+                    />
+                  </div>
+                </div>
+
+                {/* Título, organización e instructor */}
                 <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-3">
-                    <span className="text-[9px] font-mono text-gray-700 hidden md:block">
+                  <div className="flex items-start gap-3">
+                    <span className="text-[9px] font-mono text-gray-700 hidden md:block mt-1.5">
                       {String(index + 1).padStart(2, '0')}
                     </span>
-                    <p className="text-lg font-mono text-gray-200 group-hover:text-white transition-colors duration-75">
-                      {getTranslation(language, `${item.key}Title`)}
-                    </p>
+                    <div className="flex-1">
+                      {/* Organización/Empresa - DESTACADA */}
+                      <p className="text-base font-mono text-white font-medium tracking-wide mb-1">
+                        {organization}
+                      </p>
+                      {/* Título del curso */}
+                      <p className="text-sm font-mono text-gray-400 group-hover:text-gray-300 transition-colors duration-75 mb-2">
+                        {getTranslation(language, `${item.key}Title`)}
+                      </p>
+                      {/* Instructor */}
+                      {instructor && (
+                        <p className="text-sm font-mono text-gray-600 leading-relaxed">
+                          <span className="text-gray-700">by</span> {instructor}
+                        </p>
+                      )}
+                    </div>
                   </div>
-                  <p className="text-sm font-mono text-gray-600 mt-1 md:ml-8 leading-relaxed">
-                    {getTranslation(language, `${item.key}Subtitle`)}
-                  </p>
                 </div>
                 
                 {/* Horas */}
-                <div className="flex md:justify-end">
+                <div className="flex md:justify-end md:pt-1">
                   <span className="text-sm font-mono text-gray-500 bg-white/5 px-2 py-1 md:bg-transparent md:px-0 md:py-0">
                     {item.hours}
                   </span>
                 </div>
                 
                 {/* Año */}
-                <div className="flex md:justify-end">
+                <div className="flex md:justify-end md:pt-1">
                   <span className="text-sm font-mono text-gray-600">
                     {item.year}
                   </span>
                 </div>
               </div>
             </article>
-          ))}
+            );
+          })}
         </div>
         
         {/* Footer técnico */}

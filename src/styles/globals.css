@@ -132,7 +132,11 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-black text-foreground;
+  }
+  
+  html {
+    background-color: #000;
   }
 }
 
@@ -294,7 +298,7 @@ html {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 9998;
+  z-index: -1;
   
   /* Cuadrícula muy dispersa - puntos casi invisibles */
   background-image: radial-gradient(

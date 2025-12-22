@@ -164,7 +164,7 @@ export default function Hero() {
             {/* Tag técnico - ROL VISIBLE */}
             <span
               data-reveal
-              className="text-sm font-mono text-gray-600 mb-6 tracking-[0.15em] uppercase border-l-2 border-gray-400 pl-4 font-medium"
+              className="text-base md:text-lg font-mono text-gray-600 mb-6 tracking-[0.15em] uppercase border-l-2 border-gray-400 pl-4 font-medium"
             >
               {getTranslation(language, 'heroTag')}
             </span>
@@ -177,7 +177,7 @@ export default function Hero() {
                 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-8 max-w-5xl text-portfolio-text leading-[0.9]"
               >
                 {language === 'en' ? 'STRATEGIC' : 'DISEÑO'} <br />
-                <span className="text-gray-300">{language === 'en' ? 'DESIGN &' : 'ESTRATÉGICO &'}</span> <br />
+                <span className="text-gray-500">{language === 'en' ? 'DESIGN &' : 'ESTRATÉGICO &'}</span> <br />
                 {language === 'en' ? 'AUTOMOTIVE' : 'AUTOMOCIÓN'}
               </h1>
               

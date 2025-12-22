@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Globe } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
 import { getTranslation } from '../data/translations';
@@ -57,6 +57,11 @@ export default function Header() {
     }
   };
 
+  const handleAboutClick = () => {
+    setIsMenuOpen(false);
+    navigate('/about');
+  };
+
   const handleExtraClick = () => {
     setIsMenuOpen(false);
     navigate('/extra');
@@ -68,7 +73,7 @@ export default function Header() {
 
   const menuItems = [
     { label: getTranslation(language, 'work'), action: () => handleScrollToSection('work') },
-    { label: getTranslation(language, 'about'), action: () => handleScrollToSection('about') },
+    { label: getTranslation(language, 'about'), action: handleAboutClick },
     { label: getTranslation(language, 'contact'), action: () => handleScrollToSection('contact') },
     { label: getTranslation(language, 'extra'), action: handleExtraClick },
   ];
@@ -92,7 +97,7 @@ export default function Header() {
           to="/" 
           onClick={handleLogoClick}
           style={{
-            fontSize: '20px',
+            fontSize: '24px',
             fontWeight: 'bold',
             letterSpacing: '-0.02em',
             color: '#111111',
@@ -113,7 +118,7 @@ export default function Header() {
                 key={item.label}
                 to="/extra"
                 style={{
-                  fontSize: '14px',
+                  fontSize: '16px',
                   fontWeight: '500',
                   color: '#666666',
                   fontFamily: 'system-ui, -apple-system, sans-serif',
@@ -127,7 +132,7 @@ export default function Header() {
                 key={item.label}
                 onClick={item.action}
                 style={{
-                  fontSize: '14px',
+                  fontSize: '16px',
                   fontWeight: '500',
                   color: '#666666',
                   background: 'none',
@@ -147,15 +152,15 @@ export default function Header() {
         {/* Language Switcher */}
         <button
           onClick={toggleLanguage}
-          className="hidden md:flex flex-shrink-0 ml-8 items-center justify-center"
+          className="hidden md:flex flex-shrink-0 ml-8 items-center justify-center gap-2"
           style={{
             background: '#111111',
             border: '1px solid #111111',
-            borderRadius: '4px',
-            padding: '6px 10px',
+            borderRadius: '6px',
+            padding: '8px 12px',
             cursor: 'pointer',
             color: '#ffffff',
-            fontSize: '12px',
+            fontSize: '14px',
             fontWeight: '500',
             letterSpacing: '0.05em',
             transition: 'all 0.15s ease',
@@ -173,7 +178,8 @@ export default function Header() {
             e.target.style.borderColor = '#111111';
           }}
         >
-          {language === 'en' ? 'ESP' : 'ENG'}
+          <Globe size={16} />
+          <span>{language === 'en' ? 'ESP' : 'ENG'}</span>
         </button>
 
         {/* Menú Hamburguesa Mobile */}
@@ -219,10 +225,10 @@ export default function Header() {
                     to="/extra"
                     onClick={() => setIsMenuOpen(false)}
                     style={{
-                      fontSize: '14px',
+                      fontSize: '16px',
                       fontWeight: '500',
                       color: '#666666',
-                      padding: '8px 0',
+                      padding: '10px 0',
                       fontFamily: 'system-ui, -apple-system, sans-serif',
                     }}
                     className="hover:text-black transition-colors"
@@ -234,12 +240,12 @@ export default function Header() {
                     key={item.label}
                     onClick={item.action}
                     style={{
-                      fontSize: '14px',
+                      fontSize: '16px',
                       fontWeight: '500',
                       color: '#666666',
                       background: 'none',
                       border: 'none',
-                      padding: '8px 0',
+                      padding: '10px 0',
                       cursor: 'pointer',
                       textAlign: 'left',
                       fontFamily: 'system-ui, -apple-system, sans-serif',
@@ -254,18 +260,18 @@ export default function Header() {
               {/* Language Switcher Mobile */}
               <button
                 onClick={toggleLanguage}
-                className="md:hidden w-full"
+                className="md:hidden w-full flex items-center justify-center gap-2"
                 style={{
                   background: '#111111',
                   border: '1px solid #111111',
-                  borderRadius: '4px',
-                  padding: '8px 0',
+                  borderRadius: '6px',
+                  padding: '12px 0',
                   cursor: 'pointer',
                   color: '#ffffff',
-                  fontSize: '12px',
+                  fontSize: '14px',
                   fontWeight: '500',
                   letterSpacing: '0.05em',
-                  marginTop: '8px',
+                  marginTop: '12px',
                   transition: 'all 0.3s ease',
                   fontFamily: 'system-ui, -apple-system, sans-serif',
                 }}
@@ -276,7 +282,8 @@ export default function Header() {
                   e.target.style.background = '#111111';
                 }}
               >
-                {language === 'en' ? 'ESPAÑOL' : 'ENGLISH'}
+                <Globe size={16} />
+                <span>{language === 'en' ? 'ESPAÑOL' : 'ENGLISH'}</span>
               </button>
             </nav>
           </motion.div>

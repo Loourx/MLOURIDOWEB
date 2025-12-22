@@ -6,73 +6,280 @@ export const projectsData = {
     category: "Automotive Design & Strategy",
     year: "2025",
     
-    // Hero Section
+    // Hero Section (Primera foto a sangre - invariable)
     hero: {
-      image: "/images/projects/cupra-hero.jpg",
+      image: "/images/projects/cupra-hero.png",
       role: "Design Engineering",
       client: "CUPRA",
     },
 
-    // Intro Section
-    intro: {
-      hook: "Más que un SUV, un refugio de montaña. Diseñado para el esquiador que busca la perfección en el proceso, no solo en el destino.",
-      challenge: "Redefinir la tipología SUV para 2035. El objetivo era romper los códigos tradicionales, transformando el vehículo en una herramienta proactiva que prepara al usuario antes de la acción.",
-      process: "Combinación de bocetado tradicional con iteraciones de Vizcom AI para la exploración formal rápida. Modelado 3D en Blender utilizando técnicas de Guide Meshes y Shrinkwrap para garantizar superficies Clase-A perfectas.",
-    },
+    // Estructura siguiendo la presentación
+    sections: [
+      // ═══════════════════════════════════════════════════════════════
+      // 1. INTRODUCCIÓN
+      // ═══════════════════════════════════════════════════════════════
+      {
+        id: "intro",
+        phase: "01",
+        title: "Introducción",
+        titleEn: "Introduction",
+        type: "text-only",
+        content: {
+          hook: "Un refugio de montaña sobre ruedas. Para el esquiador que busca perfección.",
+          hookEn: "A mountain refuge on wheels. For the skier seeking perfection.",
+          description: "Redefiniendo la tipología SUV para 2035. El vehículo como preparación activa para la experiencia.",
+          descriptionEn: "Redefining SUV typology for 2035. The vehicle as active preparation for the experience.",
+        }
+      },
 
-    // Gallery Section (Bento Box)
-    gallery: [
+      // ═══════════════════════════════════════════════════════════════
+      // 2. FASE CONCEPTUAL
+      // ═══════════════════════════════════════════════════════════════
       {
-        id: "interior",
-        image: "/images/projects/cupra-interior.jpg",
-        title: "Columna Central de Esquís",
-        size: "large-left", // Ocupa lado izquierdo grande
-        description: "Innovadora integración del equipamiento en la cabina como escultura.",
+        id: "concept-intro",
+        phase: "02",
+        title: "Fase Conceptual",
+        titleEn: "Conceptual Phase",
+        type: "phase-header",
+        subsections: ["Conceptualización Inicial", "Dimensionamiento", "Interior Conceptual", "Interior Final"]
       },
       {
-        id: "clay",
-        image: "/images/projects/cupra-clay.jpg",
-        title: "Tangibilidad Física",
-        size: "small-right-top",
-        description: "Maqueta 3D impresa en resina. Validación del concepto.",
+        id: "initial-design",
+        phase: "02",
+        subtitle: "Conceptualización Inicial",
+        subtitleEn: "Initial Conceptualization",
+        type: "image-left",
+        image: "/images/projects/cupra-initial-design.png",
+        content: {
+          title: "Exploración Formal",
+          titleEn: "Form Exploration",
+          description: "Definición del lenguaje visual y carácter del vehículo.",
+          descriptionEn: "Defining visual language and vehicle character.",
+        }
       },
       {
-        id: "process",
-        image: "/images/projects/cupra-process-1.jpg",
-        title: "Proceso de Diseño",
-        size: "small-right-bottom",
-        description: "Bocetos + Vizcom AI. Exploración formal acelerada.",
+        id: "dimensioning",
+        phase: "02",
+        subtitle: "Dimensionamiento e Ingeniería",
+        subtitleEn: "Dimensioning & Engineering",
+        type: "image-right",
+        image: "/images/projects/cupra-dimensioning.png",
+        content: {
+          title: "Package Técnico",
+          titleEn: "Technical Package",
+          description: "Concepto sobre retícula técnica. Validación dimensional.",
+          descriptionEn: "Concept on technical grid. Dimensional validation.",
+        }
+      },
+      {
+        id: "interior-concept",
+        phase: "02",
+        subtitle: "Conceptualización del Interior",
+        subtitleEn: "Interior Conceptualization",
+        type: "image-left",
+        image: "/images/projects/cupra-interior-concept.png",
+        content: {
+          title: "Elementos Únicos",
+          titleEn: "Unique Elements",
+          description: "Volantes, asientos e interiores con formas orgánicas.",
+          descriptionEn: "Steering wheels, seats and interiors with organic forms.",
+        }
+      },
+      {
+        id: "interior-final",
+        phase: "02",
+        subtitle: "Interior Final",
+        subtitleEn: "Final Interior",
+        type: "image-right",
+        image: "/images/projects/cupra-interior-final.png",
+        content: {
+          title: "Layout Definitivo",
+          titleEn: "Final Layout",
+          description: "Columna central de esquís como elemento escultórico.",
+          descriptionEn: "Central ski column as sculptural element.",
+        }
+      },
+
+      // ═══════════════════════════════════════════════════════════════
+      // 3. FASE DE DESARROLLO
+      // ═══════════════════════════════════════════════════════════════
+      {
+        id: "dev-intro",
+        phase: "03",
+        title: "Fase de Desarrollo",
+        titleEn: "Development Phase",
+        type: "phase-header",
+        subsections: ["Identidad Corporativa", "UX/UI", "HMI", "Modelado CAD"]
+      },
+      {
+        id: "branding",
+        phase: "03",
+        subtitle: "Identidad Corporativa",
+        subtitleEn: "Corporate Identity",
+        type: "image-left",
+        image: "/images/projects/cupra-branding.png",
+        content: {
+          title: "Branding K2",
+          titleEn: "K2 Branding",
+          description: "Naming, logos y sistema visual completo.",
+          descriptionEn: "Naming, logos and complete visual system.",
+        }
+      },
+      {
+        id: "uxui",
+        phase: "03",
+        subtitle: "UX/UI",
+        type: "image-right",
+        image: "/images/projects/cupra-ui.png",
+        content: {
+          title: "Experiencia de Usuario",
+          titleEn: "User Experience",
+          description: "User journeys y ecosistema digital del vehículo.",
+          descriptionEn: "User journeys and vehicle digital ecosystem.",
+        }
+      },
+      {
+        id: "hmi",
+        phase: "03",
+        subtitle: "HMI",
+        type: "image-left",
+        image: "/images/projects/cupra-hmi.png",
+        content: {
+          title: "Interfaces",
+          titleEn: "Interfaces",
+          description: "Pantallas, controles y sistemas de feedback.",
+          descriptionEn: "Displays, controls and feedback systems.",
+        }
+      },
+      {
+        id: "modeling",
+        phase: "03",
+        subtitle: "Modelado CAD",
+        subtitleEn: "CAD Modeling",
+        type: "image-right",
+        image: "/images/projects/cupra-clay.png", 
+        content: {
+          title: "Subdivision Surface",
+          titleEn: "Subdivision Surface",
+          description: "Modelado profesional en Blender. Topología optimizada.",
+          descriptionEn: "Professional Blender modeling. Optimized topology.",
+        }
+      },
+
+      // ═══════════════════════════════════════════════════════════════
+      // 4. FASE FINAL
+      // ═══════════════════════════════════════════════════════════════
+      {
+        id: "final-intro",
+        phase: "04",
+        title: "Fase Final",
+        titleEn: "Final Phase",
+        type: "phase-header",
+        subsections: ["Renders Exteriores Finales", "Renders Interiores Finales", "Detalle de Columna de Esquís", "Puesta en Escena", "CMF"]
+      },
+      {
+        id: "renders-exterior",
+        phase: "04",
+        subtitle: "Renders Exteriores Finales",
+        subtitleEn: "Final Exterior Renders",
+        type: "image-left",
+        image: "/images/projects/cupra-render-exterior.png",
+        content: {
+          title: "Visualización Exterior",
+          titleEn: "Exterior Visualization",
+          description: "Renders fotorrealistas del diseño exterior en contexto.",
+          descriptionEn: "Photorealistic renders of exterior design in context.",
+        }
+      },
+      {
+        id: "renders-interior",
+        phase: "04",
+        subtitle: "Renders Interiores Finales",
+        subtitleEn: "Final Interior Renders",
+        type: "image-right",
+        image: "/images/projects/cupra-render-interior.png",
+        content: {
+          title: "Visualización Interior",
+          titleEn: "Interior Visualization",
+          description: "Experiencia interior y detalles de acabados.",
+          descriptionEn: "Interior experience and finishing details.",
+        }
+      },
+      {
+        id: "ski-column",
+        phase: "04",
+        subtitle: "Detalle de Columna de Esquís",
+        subtitleEn: "Ski Column Detail",
+        type: "image-left",
+        image: "/images/projects/cupra-ski-column.jpg",
+        content: {
+          title: "Almacenamiento de Esquís",
+          titleEn: "Ski Storage",
+          description: "Columna central escultórica para transporte seguro de equipos.",
+          descriptionEn: "Central sculptural column for safe equipment transport.",
+        }
+      },
+      {
+        id: "staging",
+        phase: "04",
+        subtitle: "Puesta en Escena",
+        subtitleEn: "Staging",
+        type: "image-right",
+        image: "/images/projects/cupra-staging.png",
+        content: {
+          title: "Contexto de Uso",
+          titleEn: "Use Context",
+          description: "El vehículo en su entorno natural de montaña.",
+          descriptionEn: "Vehicle in its natural mountain environment.",
+        }
+      },
+      {
+        id: "cmf",
+        phase: "04",
+        subtitle: "CMF",
+        type: "image-left",
+        image: "/images/projects/cupra-cmf.png",
+        content: {
+          title: "Color, Material & Finish",
+          titleEn: "Color, Material & Finish",
+          description: "Paleta inspirada en alta montaña. Acabados mate y textiles técnicos.",
+          descriptionEn: "High mountain inspired palette. Matte finishes and technical textiles.",
+        }
+      },
+      
+      // ═══════════════════════════════════════════════════════════════
+      // 5. SECCIÓN DE VIDEO (OPCIONAL)
+      // ═══════════════════════════════════════════════════════════════
+      {
+        id: "final-video",
+        phase: "05",
+        title: "Presentación Final",
+        titleEn: "Final Presentation", 
+        type: "video",
+        video: {
+          // OPCIÓN 1: Video local (MP4 optimizado)
+          url: "/videos/cupra-final-presentation.mp4",
+          poster: "/images/projects/cupra-video-poster.png",
+          title: "CUPRA K2 - Presentación Final",
+          titleEn: "CUPRA K2 - Final Presentation",
+          description: "Video completo del proceso de diseño y resultado final del proyecto.",
+          descriptionEn: "Complete video of the design process and final project result.",
+          
+          // OPCIÓN 2: Video de YouTube (comentar la opción 1 y descomentar esta)
+          // url: "https://www.youtube.com/watch?v=VIDEO_ID_HERE",
+          // title: "CUPRA K2 - Presentación Final",
+          // titleEn: "CUPRA K2 - Final Presentation", 
+          // description: "Video completo del proceso de diseño y resultado final del proyecto.",
+          // descriptionEn: "Complete video of the design process and final project result.",
+        },
+        content: {
+          title: "Proceso y Resultado",
+          titleEn: "Process and Result",
+          description: "Síntesis visual del proyecto completo desde concepto hasta implementación.",
+          descriptionEn: "Visual synthesis of the complete project from concept to implementation.",
+        }
       },
     ],
-
-    // Features Section
-    features: {
-      exterior: {
-        title: "Exterior",
-        description: "Silueta 'Shooting Brake' elevada con la línea Y0 tensa para comunicar deportividad y capacidad de carga.",
-      },
-      interior: {
-        title: "Interior",
-        description: "Innovadora Columna Central de Esquís que integra el equipamiento en la cabina, tratándolo como una escultura y no como carga oculta.",
-      },
-      digital: {
-        title: "Digital",
-        description: "Ecosistema UX/UI completo (App + HMI) para monitorización del estado de la nieve y gestión de equipo.",
-      },
-    },
-
-    // Dark Section (UX/UI)
-    darkSection: {
-      title: "Modo Nieve: App Ecosystem",
-      description: "Una experiencia digital pensada para el viajero activo. Dashboard integrado con monitorización de condiciones, gestión de equipo y planificación de rutas. La app se sincroniza con el HMI del vehículo para una experiencia seamless.",
-      images: ["/images/projects/cupra-ui.png"],
-    },
-
-    // Video Section
-    video: {
-      url: "/videos/cupra-video.mp4",
-      title: "CUPRA K2 - Final Film",
-    },
 
     // Next Project
     nextProject: {
@@ -94,28 +301,21 @@ export const projectsData = {
       client: "NAVANTIA",
     },
 
-    intro: {
-      hook: "Revolucionando la fabricación naval con impresión 3D de gran escala.",
-      challenge: "Optimizar procesos de manufactura tradicionales mediante tecnología aditiva avanzada.",
-      process: "Investigación de flujos de trabajo, validación de materiales y diseño de optimización topológica.",
-    },
-
-    gallery: [
+    sections: [
       {
-        id: "main",
-        image: "/images/projects/navantia-main.jpg",
-        title: "Prototipo 3D",
-        size: "large-left",
-        description: "Pieza impresa en resina de ingeniería.",
+        id: "intro",
+        phase: "01",
+        title: "Introducción",
+        titleEn: "Introduction",
+        type: "text-only",
+        content: {
+          hook: "Revolucionando la fabricación naval con impresión 3D de gran escala.",
+          hookEn: "Revolutionizing naval manufacturing with large-scale 3D printing.",
+          description: "Optimización de procesos de manufactura tradicionales mediante tecnología aditiva avanzada.",
+          descriptionEn: "Optimization of traditional manufacturing processes through advanced additive technology.",
+        }
       },
     ],
-
-    features: {
-      sustainability: {
-        title: "Sostenibilidad",
-        description: "Reducción de residuos mediante manufacturación aditiva.",
-      },
-    },
 
     nextProject: {
       slug: "sosterra",
@@ -136,11 +336,21 @@ export const projectsData = {
       client: "SOSTERRA",
     },
 
-    intro: {
-      hook: "Posicionamiento de marca para una startup de sostenibilidad ambiental.",
-      challenge: "Crear identidad coherente en el mercado de soluciones climáticas.",
-      process: "Research estratégico, arquetipos de marca y ecosistema visual completo.",
-    },
+    sections: [
+      {
+        id: "intro",
+        phase: "01",
+        title: "Introducción",
+        titleEn: "Introduction",
+        type: "text-only",
+        content: {
+          hook: "Posicionamiento de marca para una startup de sostenibilidad ambiental.",
+          hookEn: "Brand positioning for an environmental sustainability startup.",
+          description: "Research estratégico, arquetipos de marca y ecosistema visual completo.",
+          descriptionEn: "Strategic research, brand archetypes and complete visual ecosystem.",
+        }
+      },
+    ],
 
     nextProject: {
       slug: "cupra",
