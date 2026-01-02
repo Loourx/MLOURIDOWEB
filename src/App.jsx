@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { SpeedInsights } from "@vercel/speed-insights/react";
+import { Analytics } from "@vercel/analytics/react";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import HeroBio from "./components/HeroBio";
@@ -49,6 +50,8 @@ function App() {
       <FirstLoadProvider>
         {/* Vercel Speed Insights */}
         <SpeedInsights />
+        {/* Vercel Analytics */}
+        <Analytics />
         {/* Cursor personalizado - Solo desktop */}
         <CustomCursor />
         {/* Hardware Overlay global - Píxeles estáticos estilo Nothing */}
