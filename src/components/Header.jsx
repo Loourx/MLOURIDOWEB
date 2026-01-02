@@ -75,7 +75,8 @@ export default function Header() {
     { id: 'work', label: getTranslation(language, 'work'), action: () => handleScrollToSection('work') },
     { id: 'about', label: getTranslation(language, 'about'), action: handleAboutClick },
     { id: 'contact', label: getTranslation(language, 'contact'), action: () => handleScrollToSection('contact') },
-    { id: 'extra', label: getTranslation(language, 'extra'), action: handleExtraClick },
+    // TODO: Extra - Continuar más adelante
+    // { id: 'extra', label: getTranslation(language, 'extra'), action: handleExtraClick },
   ];
 
   return (

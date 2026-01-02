@@ -55,7 +55,8 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/project/:slug" element={<ProjectPageWrapper />} />
-            <Route path="/extra" element={<ExtraPage />} />
+            {/* TODO: Página Extra - Continuar más adelante */}
+            {/* <Route path="/extra" element={<ExtraPage />} /> */}
           </Routes>
         </Router>
       </FirstLoadProvider>

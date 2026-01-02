@@ -135,17 +135,6 @@ export default function AboutPage() {
                     </span>
                   </div>
                 </div>
-                
-                {/* Download CV */}
-                <a
-                  href="/JUN25_LouridoRegueiraMario_13_Curriculum_MODIFICADO.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-4 w-full flex items-center justify-center gap-3 py-3 border border-white/20 text-sm font-mono tracking-wider hover:bg-white hover:text-black transition-all duration-150"
-                >
-                  <span>↓</span>
-                  {getTranslation(language, 'aboutDownloadCV')}
-                </a>
               </div>
             </div>
 

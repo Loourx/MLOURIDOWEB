@@ -130,9 +130,9 @@ export default function Projects() {
       
       <div className="max-w-6xl mx-auto">
         {/* Header con estilo técnico */}
-        <div className="flex items-center gap-4 mb-4">
+        <div className="flex items-center gap-4 mb-4 pr-4">
           <span className="section-index">01</span>
-          <span className="text-[10px] font-mono text-gray-400 tracking-[0.2em] uppercase">
+          <span className="text-[10px] font-mono text-gray-400 tracking-[0.2em] uppercase whitespace-nowrap">
             // INDEX_PROJECTS [2024-2025]
           </span>
         </div>
