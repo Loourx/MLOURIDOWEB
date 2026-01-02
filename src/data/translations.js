@@ -25,6 +25,9 @@ export const translations = {
     projectProduct: 'PRODUCT',
     projectBusinessStrategy: 'BUSINESS STRATEGY',
     
+    // Project Titles (only for non-brand names)
+    projectTitleUrbanFurniture: 'URBAN FURNITURE',
+    
     // About
     aboutNumber: '[02]',
     aboutTitle: 'About Me',
@@ -41,7 +44,7 @@ export const translations = {
     
     // HeroBio (Home teaser)
     heroBioTitle: 'Mario Lourido',
-    heroBioPitch: 'Industrial Design Engineer specialized in automotive and strategic product development. Transforming complex challenges into tangible, viable products.',
+    heroBioPitch: 'Industrial Design Engineer specialized in automotive and strategic product development. Transforming complex challenges into tangible, viable solutions.',
     aboutPageIntro: 'Full professional profile: experience, skills, education and technical specifications. Everything you need to know about my background and approach.',
     
     aboutExperienceTitle: 'Professional Experience',
@@ -191,8 +194,9 @@ export const translations = {
     projectAutomotive: 'AUTOMOCIÓN',
     projectAdditiveManufacturing: 'FABRICACIÓN ADITIVA',
     projectProduct: 'PRODUCTO',
-    projectBusinessStrategy: 'ESTRATEGIA EMPRESARIAL',
-    
+    projectBusinessStrategy: 'ESTRATEGIA EMPRESARIAL',    
+    // Project Titles (only for non-brand names)
+    projectTitleUrbanFurniture: 'MOBILIARIO URBANO',    
     // About
     aboutNumber: '[02]',
     aboutTitle: 'Sobre mí',
@@ -205,35 +209,35 @@ export const translations = {
     aboutMobilityValue: 'Vehículo Propio',
     
     aboutBioTitle: 'Sobre mí',
-    aboutBioContent: '¡Hola! Soy Mario, Ingeniero y Máster en Diseño Industrial con enfoque multidisciplinar. Mi mayor fortaleza radica en fusionar precisión técnica con creatividad conceptual, transformando desafíos complejos en productos tangibles y viables. Mi trayectoria abarca desde la conceptualización hasta validación técnica en entornos de innovación real.',
+    aboutBioContent: '¡Hola! Soy Mario, Ingeniero y Máster en Diseño Industrial con enfoque multidisciplinar. Mi mayor fortaleza radica en liderar equipos y proyectos que combinan creatividad conceptual y viabilidad técnica, transformando desafíos complejos en soluciones tangibles y realizables. Mi trayectoria abarca desde la conceptualización hasta validación técnica en entornos de innovación real.',
     
     // HeroBio (Home teaser)
     heroBioTitle: 'Mario Lourido',
-    heroBioPitch: 'Ingeniero en Diseño Industrial especializado en automoción y desarrollo estratégico de producto. Transformando desafíos complejos en productos tangibles y viables.',
-    aboutPageIntro: 'Perfil profesional completo: experiencia, habilidades, educación y especificaciones técnicas. Todo lo que necesitas saber sobre mi trayectoria y enfoque.',
+    heroBioPitch: 'Ingeniero en Diseño Industrial especializado en automoción y desarrollo estratégico de producto. Transformando desafíos complejos en soluciones tangibles y viables.',
+    aboutPageIntro: 'Perfil profesional completo: Experiencia, habilidades, educación y especificaciones técnicas. Todo lo que necesitas saber sobre mi trayectoria y enfoque.',
     
     aboutExperienceTitle: 'Experiencia Profesional',
     aboutCompany: 'NAVANTIA S.A. S.M.E.',
     aboutCompanyRole: 'Dep. Transformación Digital | 2024 - Presente',
     aboutCompanyDesc1: 'Desarrollo de proyectos de <strong>Gemelo Digital</strong>, conectando herramientas corporativas (SAP ERP, WinCC) con motores gráficos de tiempo real (API UNITY3D y Unreal Engine 5) para visualización avanzada de datos industriales. Elaboración de materiales de presentación corporativos de alto nivel.',
     aboutProjectTitle: 'PROYECTO OKSE: GESTIÓN DE RESIDUOS 4.0',
-    aboutProjectDesc: 'Propuesta de valor para <strong>digitalización y sensorización</strong> de astillero naval. Optimización de procesos de gestión de residuos valiosos (chatarra y madera) mediante trazabilidad digital.',
+    aboutProjectDesc: 'Propuesta de valor para <strong>digitalización y sensorización</strong> de astillero naval. Optimización de procesos de gestión de residuos valiosos (chatarra y madera) mediante trazabilidad digital. Rediseño de los medios de transporte con propuestas Innovadoras ',
     
     aboutSkillsTitle: 'Conocimientos Técnicos',
-    aboutSkill1: 'Diseño de producto e innovación',
+    aboutSkill1: '<strong>Diseño</strong> de producto e innovación',
     aboutSkill2: 'Gestión estratégica de proyectos',
     aboutSkill3: 'Procesos de fabricación industrial',
-    aboutSkill4: 'Diseño ergonómico y centrado en usuario',
-    aboutSkill5: 'Planificación económica y viabilidad',
-    aboutSkill6: 'Análisis de mercado y tendencias',
+    aboutSkill4: 'Diseño ergonómico y <strong>centrado en usuario</strong>',
+    aboutSkill5: 'Planificación <strong>económica</strong> y viabilidad',
+    aboutSkill6: 'Análisis de mercado y <strong>tendencias</strong>',
     
     aboutSoftSkillsTitle: 'Soft Skills',
-    aboutSoftSkill1: 'Liderazgo de equipos multidisciplinares',
-    aboutSoftSkill2: 'Gestión ágil de proyectos, metodología completa',
-    aboutSoftSkill3: 'Comunicación efectiva y presentación',
-    aboutSoftSkill4: 'Pensamiento crítico y resolución de problemas',
-    aboutSoftSkill5: 'Adaptabilidad y aprendizaje continuo',
-    aboutSoftSkill6: 'Trabajo en equipo y en entornos colaborativos',
+    aboutSoftSkill1: '<strong>Liderazgo de equipos multidisciplinares y coordinación</strong>',
+    aboutSoftSkill2: '<strong>Gestión ágil de proyectos</strong>, metodología completa',
+    aboutSoftSkill3: '<strong>Comunicación efectiva y presentación</strong>',
+    aboutSoftSkill4: 'Pensamiento crítico y <strong>resolución de problemas</strong>',
+    aboutSoftSkill5: 'Adaptabilidad y <strong>aprendizaje continuo</strong>',
+    aboutSoftSkill6: '<strong>Trabajo en equipo y en entornos colaborativos</strong>',
     
     aboutEducationTitle: 'Educación',
     aboutEducation1: 'Máster Universitario en Diseño Industrial',

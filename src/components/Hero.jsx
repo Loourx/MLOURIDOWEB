@@ -81,8 +81,8 @@ export default function Hero() {
       {/* ═══ DATOS TÉCNICOS EN ESQUINAS (Estilo Nothing) ═══ */}
       {!showIntro && (
         <>
-          {/* Esquina superior izquierda - Ubicación */}
-          <div className="absolute top-24 left-6 md:left-12 z-10">
+          {/* Esquina superior izquierda - Ubicación - SOLO DESKTOP */}
+          <div className="absolute top-24 left-6 md:left-12 z-10 hidden md:block">
             <div className="flex items-center gap-2 text-[10px] font-mono tracking-widest text-gray-400 uppercase">
               <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></span>
               <span>42.8805°N, 8.5457°W</span>
@@ -92,7 +92,7 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Esquina superior derecha - Status */}
+          {/* Esquina superior derecha - Status - SOLO DESKTOP */}
           <div className="absolute top-24 right-6 md:right-12 z-10 text-right hidden md:block">
             <div className="text-[10px] font-mono tracking-widest text-gray-400 uppercase">
               SYS_STATUS: ONLINE
@@ -102,8 +102,8 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Indicador de scroll - Esquina inferior */}
-          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-3">
+          {/* Indicador de scroll - Esquina inferior - Oculto en móvil para evitar overlap */}
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex-col items-center gap-3 hidden md:flex">
             <div className="text-xs font-mono tracking-[0.3em] text-gray-400 uppercase">
               {language === 'en' ? 'SCROLL FOR SPECS' : 'SCROLL PARA SPECS'}
             </div>

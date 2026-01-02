@@ -54,10 +54,12 @@ const FullscreenGallery = ({ images, currentIndex, onClose, onNavigate, language
     return () => { document.body.style.overflow = ''; };
   }, []);
 
-  // Ocultar hint después de interacción
+  // Ocultar hint después de 3 segundos o interacción
   useEffect(() => {
     if (zoom > 1) setShowHint(false);
-  }, [zoom]);
+    const timer = setTimeout(() => setShowHint(false), 3000);
+    return () => clearTimeout(timer);
+  }, [zoom, currentIndex]);
 
   const handleWheel = (e) => {
     e.preventDefault();
@@ -324,7 +326,7 @@ const ClickableImage = ({ src, alt, className, title, subtitle, onOpenGallery, l
 // ═══════════════════════════════════════════════════════════════════════════
 // COMPONENTE: Sección de Fase (Header con número y subsecciones)
 // ═══════════════════════════════════════════════════════════════════════════
-const PhaseHeader = ({ phase, title, titleEn, subsections, language }) => (
+const PhaseHeader = ({ phase, title, titleEn, subsections, subsectionsEn, language }) => (
   <div data-reveal className="py-24 md:py-32 px-6 md:px-16 lg:px-24 border-b border-black/5 bg-white">
     <div className="max-w-7xl mx-auto">
       <div className="flex items-baseline gap-6 mb-8">
@@ -337,7 +339,7 @@ const PhaseHeader = ({ phase, title, titleEn, subsections, language }) => (
       </div>
       {subsections && (
         <div className="flex flex-wrap gap-6 mt-8">
-          {subsections.map((sub, i) => (
+          {(language === 'en' && subsectionsEn ? subsectionsEn : subsections).map((sub, i) => (
             <span key={i} className="text-sm font-mono text-black/40 uppercase tracking-widest">
               {sub}
             </span>
@@ -497,9 +499,24 @@ const PanelsSection = ({ phase, subtitle, subtitleEn, images, content, language 
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const [showHint, setShowHint] = useState(true);
+  const [loadedImages, setLoadedImages] = useState({});
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const containerRef = React.useRef(null);
 
   const totalPages = images?.length || 0;
+
+  // PRECARGA DE IMÁGENES - Cargar todas las imágenes al montar el componente
+  useEffect(() => {
+    if (!images || images.length === 0) return;
+    
+    images.forEach((src, index) => {
+      const img = new Image();
+      img.onload = () => {
+        setLoadedImages(prev => ({ ...prev, [index]: true }));
+      };
+      img.src = src;
+    });
+  }, [images]);
 
   // Reset zoom y posición cuando cambia de página
   useEffect(() => {
@@ -678,22 +695,35 @@ const PanelsSection = ({ phase, subtitle, subtitleEn, images, content, language 
         touchAction: isFullscreenMode ? 'none' : 'auto'
       }}
     >
-      {/* Imagen */}
+      {/* Contenedor de imágenes con transición suave */}
       <div 
-        className={`flex items-center justify-center ${isFullscreenMode ? 'h-full' : ''}`}
+        className={`relative flex items-center justify-center ${isFullscreenMode ? 'h-full' : ''}`}
         style={{
           transform: `scale(${zoom}) translate(${position.x / zoom}px, ${position.y / zoom}px)`,
           transition: isDragging ? 'none' : 'transform 0.2s ease-out',
           transformOrigin: 'center center'
         }}
       >
-        <img
-          src={images[currentPage]}
-          alt={`Panel ${currentPage + 1}`}
-          className={`max-w-full ${isFullscreenMode ? 'max-h-screen object-contain' : 'w-full h-auto'}`}
-          draggable={false}
-          style={{ userSelect: 'none', pointerEvents: 'none' }}
-        />
+        {/* Todas las imágenes precargadas - solo la actual visible */}
+        {images.map((src, index) => (
+          <img
+            key={src}
+            src={src}
+            alt={`Panel ${index + 1}`}
+            className={`max-w-full transition-opacity duration-300 ease-out ${isFullscreenMode ? 'max-h-screen object-contain' : 'w-full h-auto'} ${
+              currentPage === index ? 'opacity-100' : 'opacity-0 absolute inset-0 pointer-events-none'
+            }`}
+            draggable={false}
+            style={{ userSelect: 'none', pointerEvents: currentPage === index ? 'none' : 'none' }}
+          />
+        ))}
+        
+        {/* Indicador de carga si la imagen actual no está lista */}
+        {!loadedImages[currentPage] && (
+          <div className="absolute inset-0 flex items-center justify-center bg-black/20">
+            <div className="w-8 h-8 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+          </div>
+        )}
       </div>
 
       {/* Hint de scroll para zoom - SOLO en fullscreen */}
@@ -1030,6 +1060,7 @@ export default function ProjectPage({ project }) {
             title={section.title}
             titleEn={section.titleEn}
             subsections={section.subsections}
+            subsectionsEn={section.subsectionsEn}
             language={language}
           />
         );
@@ -1102,7 +1133,7 @@ export default function ProjectPage({ project }) {
       <section className="relative h-screen w-full overflow-hidden border-b border-white/10 z-[9999] -mt-20">
         <ImageWithFallback
           src={project.hero.image}
-          alt={project.title}
+          alt={language === 'en' && project.titleEn ? project.titleEn : project.title}
           className="w-full h-full object-cover"
         />
         
@@ -1122,12 +1153,12 @@ export default function ProjectPage({ project }) {
               </span>
               <span className="text-white/20">//</span>
               <span className="text-[10px] font-mono text-white/40 uppercase tracking-widest">
-                {project.category}
+                {language === 'en' && project.categoryEn ? project.categoryEn : project.category}
               </span>
             </div>
             
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-mono font-bold text-white leading-none tracking-tight mb-6">
-              {project.title}
+              {language === 'en' && project.titleEn ? project.titleEn : project.title}
             </h1>
             
             <div className="flex items-center gap-6 text-sm font-mono text-white/40">
@@ -1147,16 +1178,16 @@ export default function ProjectPage({ project }) {
       {/* ═══════════════════════════════════════════════════════════════════
           NAVEGACIÓN - Siguiente Proyecto
       ═══════════════════════════════════════════════════════════════════ */}
-      <section className="py-24 md:py-32 px-6 md:px-16 lg:px-24 bg-black border-t border-white/10">
+      <section className="py-16 md:py-32 px-4 md:px-16 lg:px-24 bg-black border-t border-white/10">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+          <div className="flex flex-col items-center md:items-start md:flex-row md:justify-between gap-8">
             {/* Volver al índice */}
             <a
               href="/#work"
               className="group flex items-center gap-4 text-white/40 hover:text-white transition-colors duration-200"
             >
               <ChevronRight className="w-5 h-5 rotate-180 group-hover:-translate-x-2 transition-transform duration-200" />
-              <div>
+              <div className="text-center md:text-left">
                 <p className="text-[10px] font-mono tracking-widest text-white/30 uppercase mb-1">
                   BACK_TO
                 </p>
@@ -1172,13 +1203,15 @@ export default function ProjectPage({ project }) {
                 href={`/project/${project.nextProject.slug}`}
                 className="group flex items-center gap-6 text-white hover:text-white/70 transition-colors duration-200"
               >
-                <div className="text-right">
+                <div className="text-center md:text-right">
                   <p className="text-[10px] font-mono tracking-widest text-white/30 uppercase mb-2">
                     NEXT_PROJECT
                   </p>
-                  <p className="text-3xl md:text-4xl font-mono font-bold">{project.nextProject.title}</p>
+                  <p className="text-2xl md:text-4xl font-mono font-bold">
+                    {language === 'en' && project.nextProject.titleEn ? project.nextProject.titleEn : project.nextProject.title}
+                  </p>
                   <p className="text-sm font-mono text-white/40 mt-2 uppercase tracking-widest">
-                    {project.nextProject.tag}
+                    {language === 'en' && project.nextProject.tagEn ? project.nextProject.tagEn : project.nextProject.tag}
                   </p>
                 </div>
                 <ChevronRight className="w-8 h-8 group-hover:translate-x-2 transition-transform duration-200" />

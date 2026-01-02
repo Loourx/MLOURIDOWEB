@@ -91,19 +91,12 @@ export default function Header() {
         willChange: 'transform',
       }}
     >
-      <div className="flex justify-between items-center px-6 py-6">
-        {/* Logo */}
+      <div className="flex justify-between items-center px-6 py-5">
+        {/* Logo - Usando fuente mono consistente con el resto del sitio */}
         <Link 
           to="/" 
           onClick={handleLogoClick}
-          style={{
-            fontSize: '24px',
-            fontWeight: 'bold',
-            letterSpacing: '-0.02em',
-            color: '#111111',
-            fontFamily: 'system-ui, -apple-system, sans-serif',
-          }}
-          className="hover:text-gray-700 transition-colors flex-shrink-0"
+          className="font-mono text-2xl md:text-3xl font-bold tracking-tight text-[#111111] hover:text-gray-700 transition-colors flex-shrink-0"
         >
           MARIO LOURIDO
         </Link>
@@ -111,19 +104,13 @@ export default function Header() {
         {/* Contenedor derecho: Navegación + Language + Hamburguesa */}
         <div className="flex items-center gap-0">
           {/* Navegación Desktop */}
-          <nav className="hidden md:flex gap-8">
+          <nav className="hidden md:flex gap-10">
           {menuItems.map((item) => (
             item.label === 'Extra' ? (
               <Link 
                 key={item.label}
                 to="/extra"
-                style={{
-                  fontSize: '16px',
-                  fontWeight: '500',
-                  color: '#666666',
-                  fontFamily: 'system-ui, -apple-system, sans-serif',
-                }}
-                className="hover:text-black transition-colors"
+                className="font-mono text-base font-medium text-gray-500 hover:text-black transition-colors tracking-wide"
               >
                 {item.label}
               </Link>
@@ -131,17 +118,7 @@ export default function Header() {
               <button 
                 key={item.label}
                 onClick={item.action}
-                style={{
-                  fontSize: '16px',
-                  fontWeight: '500',
-                  color: '#666666',
-                  background: 'none',
-                  border: 'none',
-                  padding: 0,
-                  cursor: 'pointer',
-                  fontFamily: 'system-ui, -apple-system, sans-serif',
-                }}
-                className="hover:text-black transition-colors"
+                className="font-mono text-base font-medium text-gray-500 hover:text-black transition-colors tracking-wide bg-transparent border-none p-0 cursor-pointer"
               >
                 {item.label}
               </button>
@@ -152,31 +129,7 @@ export default function Header() {
         {/* Language Switcher */}
         <button
           onClick={toggleLanguage}
-          className="hidden md:flex flex-shrink-0 ml-8 items-center justify-center gap-2"
-          style={{
-            background: '#111111',
-            border: '1px solid #111111',
-            borderRadius: '6px',
-            padding: '8px 12px',
-            cursor: 'pointer',
-            color: '#ffffff',
-            fontSize: '14px',
-            fontWeight: '500',
-            letterSpacing: '0.05em',
-            transition: 'all 0.15s ease',
-            fontFamily: 'system-ui, -apple-system, sans-serif',
-            transform: 'scale(1)',
-          }}
-          onMouseEnter={(e) => {
-            e.target.style.background = '#000000';
-            e.target.style.transform = 'scale(1.05)';
-            e.target.style.borderColor = '#333333';
-          }}
-          onMouseLeave={(e) => {
-            e.target.style.background = '#111111';
-            e.target.style.transform = 'scale(1)';
-            e.target.style.borderColor = '#111111';
-          }}
+          className="hidden md:flex flex-shrink-0 ml-8 items-center justify-center gap-2 font-mono text-sm font-medium text-white bg-[#111111] border border-[#111111] rounded-md px-3 py-2 cursor-pointer tracking-wide hover:bg-black hover:scale-105 hover:border-gray-700 transition-all"
         >
           <Globe size={16} />
           <span>{language === 'en' ? 'ESP' : 'ENG'}</span>
@@ -224,14 +177,7 @@ export default function Header() {
                     key={item.label}
                     to="/extra"
                     onClick={() => setIsMenuOpen(false)}
-                    style={{
-                      fontSize: '16px',
-                      fontWeight: '500',
-                      color: '#666666',
-                      padding: '10px 0',
-                      fontFamily: 'system-ui, -apple-system, sans-serif',
-                    }}
-                    className="hover:text-black transition-colors"
+                    className="font-mono text-sm font-medium text-gray-500 hover:text-black transition-colors py-2.5"
                   >
                     {item.label}
                   </Link>
@@ -239,18 +185,7 @@ export default function Header() {
                   <button 
                     key={item.label}
                     onClick={item.action}
-                    style={{
-                      fontSize: '16px',
-                      fontWeight: '500',
-                      color: '#666666',
-                      background: 'none',
-                      border: 'none',
-                      padding: '10px 0',
-                      cursor: 'pointer',
-                      textAlign: 'left',
-                      fontFamily: 'system-ui, -apple-system, sans-serif',
-                    }}
-                    className="hover:text-black transition-colors"
+                    className="font-mono text-sm font-medium text-gray-500 hover:text-black transition-colors py-2.5 bg-transparent border-none text-left cursor-pointer"
                   >
                     {item.label}
                   </button>
@@ -260,27 +195,7 @@ export default function Header() {
               {/* Language Switcher Mobile */}
               <button
                 onClick={toggleLanguage}
-                className="md:hidden w-full flex items-center justify-center gap-2"
-                style={{
-                  background: '#111111',
-                  border: '1px solid #111111',
-                  borderRadius: '6px',
-                  padding: '12px 0',
-                  cursor: 'pointer',
-                  color: '#ffffff',
-                  fontSize: '14px',
-                  fontWeight: '500',
-                  letterSpacing: '0.05em',
-                  marginTop: '12px',
-                  transition: 'all 0.3s ease',
-                  fontFamily: 'system-ui, -apple-system, sans-serif',
-                }}
-                onMouseEnter={(e) => {
-                  e.target.style.background = '#000000';
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.background = '#111111';
-                }}
+                className="md:hidden w-full flex items-center justify-center gap-2 font-mono text-sm font-medium text-white bg-[#111111] border border-[#111111] rounded-md py-3 cursor-pointer tracking-wide mt-3 hover:bg-black transition-all"
               >
                 <Globe size={16} />
                 <span>{language === 'en' ? 'ESPAÑOL' : 'ENGLISH'}</span>

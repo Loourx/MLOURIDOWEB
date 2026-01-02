@@ -679,3 +679,159 @@ html {
     opacity: 0;
   }
 }
+/* ═══════════════════════════════════════════════════════════════════════════
+   TECH STACK HUD - IRON MAN STYLE ANIMATIONS
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Cubo 3D giratorio */
+@keyframes cubeRotate {
+  0% { transform: rotateX(0deg) rotateY(0deg); }
+  25% { transform: rotateX(90deg) rotateY(90deg); }
+  50% { transform: rotateX(180deg) rotateY(180deg); }
+  75% { transform: rotateX(270deg) rotateY(270deg); }
+  100% { transform: rotateX(360deg) rotateY(360deg); }
+}
+
+/* Scanline holográfico */
+@keyframes scanline {
+  0%, 100% { top: 0%; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+/* Flotación de llave */
+@keyframes wrenchFloat {
+  0%, 100% { transform: translateY(0) rotate(-15deg); }
+  50% { transform: translateY(-5px) rotate(-10deg); }
+}
+
+/* Pulse lento para elementos HUD */
+@keyframes hudPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+/* Rotación de órbita */
+@keyframes orbit {
+  0% { transform: rotate(0deg) translateX(50px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(50px) rotate(-360deg); }
+}
+
+/* Glitch effect */
+@keyframes glitch {
+  0%, 90%, 100% { transform: translate(0); filter: none; }
+  91% { transform: translate(-2px, 1px); filter: hue-rotate(90deg); }
+  92% { transform: translate(2px, -1px); filter: hue-rotate(-90deg); }
+  93% { transform: translate(-1px, -1px); }
+  94% { transform: translate(1px, 1px); filter: hue-rotate(180deg); }
+}
+
+/* Data stream */
+@keyframes dataStream {
+  0% { transform: translateY(-100%); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(100%); opacity: 0; }
+}
+
+/* Radar sweep */
+@keyframes radarSweep {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Ocultar header cuando el modal HUD está abierto */
+body.hud-modal-open header {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+}
+
+/* HUD border glow */
+@keyframes borderGlow {
+  0%, 100% { box-shadow: 0 0 5px currentColor, inset 0 0 5px currentColor; }
+  50% { box-shadow: 0 0 20px currentColor, inset 0 0 10px currentColor; }
+}
+
+/* Modal slide in animation */
+@keyframes modalSlideIn {
+  0% { 
+    opacity: 0; 
+    transform: scale(0.9) translateY(20px); 
+  }
+  100% { 
+    opacity: 1; 
+    transform: scale(1) translateY(0); 
+  }
+}
+
+/* Scanning animations for modal */
+@keyframes scanVertical {
+  0% { top: 0%; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+@keyframes scanHorizontal {
+  0% { left: 0%; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { left: 100%; opacity: 0; }
+}
+
+/* Utility classes para Tech Stack */
+.animate-cube-rotate { animation: cubeRotate 8s ease-in-out infinite; }
+.animate-scanline { animation: scanline 3s ease-in-out infinite; }
+.animate-wrench-float { animation: wrenchFloat 3s ease-in-out infinite; }
+.animate-hud-pulse { animation: hudPulse 2s ease-in-out infinite; }
+.animate-orbit { animation: orbit 10s linear infinite; }
+.animate-glitch { animation: glitch 5s ease-in-out infinite; }
+.animate-data-stream { animation: dataStream 2s linear infinite; }
+.animate-radar-sweep { animation: radarSweep 4s linear infinite; }
+.animate-border-glow { animation: borderGlow 2s ease-in-out infinite; }
+.animate-modal-slide-in { animation: modalSlideIn 0.4s ease-out forwards; }
+.animate-scan-vertical { animation: scanVertical 4s ease-in-out infinite; }
+.animate-scan-horizontal { animation: scanHorizontal 5s ease-in-out infinite; }
+
+/* 3D Transform utilities */
+.perspective-500 { perspective: 500px; }
+.perspective-1000 { perspective: 1000px; }
+.transform-style-3d { transform-style: preserve-3d; }
+.backface-visible { backface-visibility: visible; }
+.backface-hidden { backface-visibility: hidden; }
+
+/* Gradient text para HUD */
+.text-gradient-hud {
+  background: linear-gradient(135deg, #00D4FF 0%, #00FF88 50%, #FF6B35 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Holographic overlay */
+.holographic-overlay {
+  position: relative;
+}
+.holographic-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(255, 255, 255, 0.03) 2px,
+    rgba(255, 255, 255, 0.03) 4px
+  );
+  pointer-events: none;
+}
+
+/* Tech grid background */
+.tech-grid-bg {
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}

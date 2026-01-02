@@ -6,6 +6,7 @@ const projectsBase = [
   {
     slug: "cupra",
     title: "CUPRA K2",
+    titleKey: null, // Brand name - no translation needed
     tagKey: "projectAutomotive",
     year: "2025",
     figRef: "FIG_01",
@@ -15,6 +16,7 @@ const projectsBase = [
   {
     slug: "navantia",
     title: "NAVANTIA",
+    titleKey: null, // Brand name - no translation needed
     tagKey: "projectAdditiveManufacturing",
     year: "2025",
     figRef: "FIG_02",
@@ -24,6 +26,7 @@ const projectsBase = [
   {
     slug: "mobiliario",
     title: "MOBILIARIO URBANO",
+    titleKey: "projectTitleUrbanFurniture", // Needs translation
     tagKey: "projectProduct",
     year: "2024",
     figRef: "FIG_03",
@@ -33,6 +36,7 @@ const projectsBase = [
   {
     slug: "sosterra",
     title: "SOSTERRA",
+    titleKey: null, // Brand name - no translation needed
     tagKey: "projectBusinessStrategy",
     year: "2024",
     figRef: "FIG_04",
@@ -123,7 +127,7 @@ export default function Projects() {
                 <div className="flex items-start justify-between gap-4">
                   <div>
                     <h3 className="text-xl font-bold tracking-tight mb-2 group-hover:text-black transition-colors duration-[50ms]">
-                      {project.title}
+                      {project.titleKey ? getTranslation(language, project.titleKey) : project.title}
                     </h3>
                     <p className="text-[10px] font-mono tracking-[0.15em] text-gray-400 uppercase">
                       [{getTranslation(language, project.tagKey)}] // {project.year}

@@ -105,8 +105,9 @@ const CustomCursor = () => {
   }, [interactiveSelectors, hideSelectors]);
 
   // Manejar cuando el mouse sale de la ventana
+  // NO movemos la posición, solo ocultamos para evitar el "salto" visual
   const handleMouseLeave = useCallback(() => {
-    mousePos.current = { x: -100, y: -100 };
+    // Mantener la última posición conocida, solo ocultar
     if (dotRef.current) {
       dotRef.current.style.opacity = '0';
     }

@@ -6,32 +6,32 @@ import HoverFocusOverlay from './HoverFocusOverlay';
 export default function About() {
   const { language } = useLanguage();
   return (
-    <section id="about" className="py-24 md:py-32 px-6 md:px-12 bg-black text-white border-t border-white/10">
-      <div className="max-w-7xl mx-auto">
+    <section id="about" className="py-16 md:py-24 px-4 md:px-12 bg-black text-white border-t border-white/10 overflow-x-hidden">
+      <div className="max-w-7xl mx-auto w-full">
         
         {/* Header técnico estilo ficha */}
-        <div className="flex items-center justify-between mb-12 border-b border-white/10 pb-4">
-          <div className="flex items-center gap-4">
-            <span className="text-[10px] font-mono text-gray-500">02 // PROFILE_DATA</span>
-            <span className="text-gray-700">+</span>
-            <span className="text-[10px] font-mono text-gray-700">[FICHA_TÉCNICA]</span>
+        <div className="flex items-center justify-between mb-8 md:mb-12 border-b border-white/10 pb-4">
+          <div className="flex items-center gap-2 md:gap-4 min-w-0">
+            <span className="text-[9px] md:text-[10px] font-mono text-gray-500 whitespace-nowrap">02 // PROFILE</span>
+            <span className="text-gray-700 hidden md:inline">+</span>
+            <span className="text-[9px] md:text-[10px] font-mono text-gray-700 hidden md:inline">[FICHA_TÉCNICA]</span>
           </div>
-          <span className="text-[10px] font-mono text-gray-700">REV.2025</span>
+          <span className="text-[9px] md:text-[10px] font-mono text-gray-700 whitespace-nowrap">REV.2025</span>
         </div>
 
         {/* Layout Principal: Grid de 2 columnas */}
-        <div className="md:grid md:grid-cols-[0.35fr,0.65fr] md:gap-16 gap-12">
+        <div className="md:grid md:grid-cols-[0.4fr,0.6fr] md:gap-12 lg:gap-16 gap-8">
           
           {/* --- COLUMNA IZQUIERDA: ID Card Style --- */}
-          <div className="mb-10 md:mb-0">
+          <div className="mb-8 md:mb-0">
             {/* Contenedor tipo ID card */}
             <div className="border border-white/20 p-1">
-              {/* Foto con marco técnico */}
+              {/* Foto con marco técnico - Aumentada */}
               <HoverFocusOverlay>
                 <div
                   data-reveal
                   data-reveal-delay="80ms"
-                  className="aspect-[3/4] w-full bg-neutral-900 overflow-hidden relative"
+                  className="aspect-[3/4] w-full min-h-[50vh] md:min-h-[60vh] lg:min-h-[70vh] bg-neutral-900 overflow-hidden relative"
                 >
                   {/* Marcas de registro en esquinas */}
                   <div className="absolute top-2 left-2 w-4 h-4 border-l border-t border-white/30 z-10"></div>
@@ -157,12 +157,12 @@ export default function About() {
                       <span className="text-[9px] font-mono text-gray-600">6 ITEMS</span>
                     </div>
                     <ul className="space-y-2 text-xs text-gray-400 font-mono">
-                        <li className="flex items-center gap-2"><span className="text-gray-600">01.</span> {getTranslation(language, 'aboutSkill1')}</li>
-                        <li className="flex items-center gap-2"><span className="text-gray-600">02.</span> {getTranslation(language, 'aboutSkill2')}</li>
-                        <li className="flex items-center gap-2"><span className="text-gray-600">03.</span> {getTranslation(language, 'aboutSkill3')}</li>
-                        <li className="flex items-center gap-2"><span className="text-gray-600">04.</span> {getTranslation(language, 'aboutSkill4')}</li>
-                        <li className="flex items-center gap-2"><span className="text-gray-600">05.</span> {getTranslation(language, 'aboutSkill5')}</li>
-                        <li className="flex items-center gap-2"><span className="text-gray-600">06.</span> {getTranslation(language, 'aboutSkill6')}</li>
+                        <li className="flex items-center gap-2"><span className="text-gray-600">01.</span> <span dangerouslySetInnerHTML={{ __html: getTranslation(language, 'aboutSkill1') }} /></li>
+                        <li className="flex items-center gap-2"><span className="text-gray-600">02.</span> <span dangerouslySetInnerHTML={{ __html: getTranslation(language, 'aboutSkill2') }} /></li>
+                        <li className="flex items-center gap-2"><span className="text-gray-600">03.</span> <span dangerouslySetInnerHTML={{ __html: getTranslation(language, 'aboutSkill3') }} /></li>
+                        <li className="flex items-center gap-2"><span className="text-gray-600">04.</span> <span dangerouslySetInnerHTML={{ __html: getTranslation(language, 'aboutSkill4') }} /></li>
+                        <li className="flex items-center gap-2"><span className="text-gray-600">05.</span> <span dangerouslySetInnerHTML={{ __html: getTranslation(language, 'aboutSkill5') }} /></li>
+                        <li className="flex items-center gap-2"><span className="text-gray-600">06.</span> <span dangerouslySetInnerHTML={{ __html: getTranslation(language, 'aboutSkill6') }} /></li>
                     </ul>
                 </div>
 
@@ -175,12 +175,12 @@ export default function About() {
                       <span className="text-[9px] font-mono text-gray-600">6 ITEMS</span>
                     </div>
                     <ul className="space-y-2 text-xs text-gray-400 font-mono">
-                        <li className="flex items-center gap-2"><span className="text-gray-600">01.</span> {getTranslation(language, 'aboutSoftSkill1')}</li>
-                        <li className="flex items-center gap-2"><span className="text-gray-600">02.</span> {getTranslation(language, 'aboutSoftSkill2')}</li>
-                        <li className="flex items-center gap-2"><span className="text-gray-600">03.</span> {getTranslation(language, 'aboutSoftSkill3')}</li>
-                        <li className="flex items-center gap-2"><span className="text-gray-600">04.</span> {getTranslation(language, 'aboutSoftSkill4')}</li>
-                        <li className="flex items-center gap-2"><span className="text-gray-600">05.</span> {getTranslation(language, 'aboutSoftSkill5')}</li>
-                        <li className="flex items-center gap-2"><span className="text-gray-600">06.</span> {getTranslation(language, 'aboutSoftSkill6')}</li>
+                        <li className="flex items-center gap-2"><span className="text-gray-600">01.</span> <span dangerouslySetInnerHTML={{ __html: getTranslation(language, 'aboutSoftSkill1') }} /></li>
+                        <li className="flex items-center gap-2"><span className="text-gray-600">02.</span> <span dangerouslySetInnerHTML={{ __html: getTranslation(language, 'aboutSoftSkill2') }} /></li>
+                        <li className="flex items-center gap-2"><span className="text-gray-600">03.</span> <span dangerouslySetInnerHTML={{ __html: getTranslation(language, 'aboutSoftSkill3') }} /></li>
+                        <li className="flex items-center gap-2"><span className="text-gray-600">04.</span> <span dangerouslySetInnerHTML={{ __html: getTranslation(language, 'aboutSoftSkill4') }} /></li>
+                        <li className="flex items-center gap-2"><span className="text-gray-600">05.</span> <span dangerouslySetInnerHTML={{ __html: getTranslation(language, 'aboutSoftSkill5') }} /></li>
+                        <li className="flex items-center gap-2"><span className="text-gray-600">06.</span> <span dangerouslySetInnerHTML={{ __html: getTranslation(language, 'aboutSoftSkill6') }} /></li>
                     </ul>
                 </div>
             </div>

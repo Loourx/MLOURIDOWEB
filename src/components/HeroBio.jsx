@@ -7,11 +7,11 @@ export default function HeroBio() {
   const { language } = useLanguage();
   
   return (
-    <section id="about" className="py-20 md:py-28 px-6 md:px-12 bg-black text-white border-t border-white/10">
+    <section id="about" className="py-12 md:py-20 px-4 md:px-12 bg-black text-white border-t border-white/10">
       <div className="max-w-6xl mx-auto">
         
         {/* Header técnico */}
-        <div className="flex items-center gap-4 mb-8">
+        <div className="flex items-center gap-4 mb-6 md:mb-8">
           <span className="text-[10px] font-mono text-gray-600">02</span>
           <span className="text-[10px] font-mono text-gray-500 tracking-[0.2em] uppercase">
             // PROFILE_PREVIEW
@@ -19,11 +19,11 @@ export default function HeroBio() {
         </div>
 
         {/* Layout compacto: Avatar + Pitch + CTA */}
-        <div className="flex flex-col md:flex-row md:items-center gap-8 md:gap-12">
+        <div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-12">
           
-          {/* Avatar / ID Card Mini - Proporción retrato */}
+          {/* Avatar / ID Card Mini - Proporción retrato - TAMAÑO AUMENTADO */}
           <div className="flex-shrink-0">
-            <div className="w-28 h-40 md:w-36 md:h-52 border border-white/20 p-1 relative group">
+            <div className="w-40 h-56 md:w-44 md:h-60 border border-white/20 p-1 relative group">
               <img 
                 src="/images/about/FOTO BYN.jpg" 
                 alt="Mario Lourido" 
@@ -35,8 +35,8 @@ export default function HeroBio() {
               <div className="absolute bottom-1 left-1 w-2 h-2 border-l border-b border-white/30"></div>
               <div className="absolute bottom-1 right-1 w-2 h-2 border-r border-b border-white/30"></div>
             </div>
-            {/* Serial */}
-            <div className="mt-2 text-[9px] font-mono text-gray-600 text-center tracking-[0.2em]">
+            {/* Serial - Solo visible en desktop */}
+            <div className="hidden md:block mt-2 text-[9px] font-mono text-gray-600 text-center tracking-[0.2em]">
               ML-2025-001
             </div>
           </div>
@@ -75,12 +75,6 @@ export default function HeroBio() {
               <span className="text-xl group-hover:translate-x-1 transition-transform duration-150">→</span>
             </Link>
           </div>
-        </div>
-
-        {/* Línea decorativa inferior */}
-        <div className="mt-12 pt-4 border-t border-white/5 flex justify-between text-[9px] font-mono text-gray-700">
-          <span>PROFILE_TEASER_V1</span>
-          <span>TAP_FOR_FULL_SPECS</span>
         </div>
       </div>
     </section>

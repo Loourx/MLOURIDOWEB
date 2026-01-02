@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLanguage } from '../context/LanguageContext';
 import { getTranslation } from '../data/translations';
 import Header from './Header';
-import TechStack from './TechStack';
+import TechStackHUD from './TechStackHUD';
 import ContinuousLearning from './ContinuousLearning';
 import Contact from './Contact';
 import { useScrollReveal } from '../hooks/useScrollReveal';
@@ -189,8 +189,8 @@ export default function AboutPage() {
                 </div>
               </div>
 
-              {/* SEC 03: SKILLS */}
-              <div data-reveal>
+              {/* SEC 03: COMPETENCIES - REDESIGNED WITH MORE PROMINENCE */}
+              <div data-reveal className="my-16">
                 <div className="flex items-center gap-4 mb-6 pb-4 border-b border-white/10">
                   <span className="text-3xl font-bold text-white">03</span>
                   <span className="text-sm font-mono text-gray-400 tracking-[0.2em] uppercase">
@@ -198,35 +198,42 @@ export default function AboutPage() {
                   </span>
                 </div>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  {/* Technical Skills */}
-                  <div className="border border-white/10 p-6">
-                    <h4 className="text-lg font-bold mb-6 pb-3 border-b border-white/10">
-                      {getTranslation(language, 'aboutSkillsTitle')}
-                    </h4>
-                    <ul className="space-y-3">
+                {/* Enhanced Grid Layout */}
+                <div className="space-y-12">
+                  {/* Technical Skills - Full Width with Enhanced Design */}
+                  <div className="bg-gradient-to-r from-white/5 to-transparent border border-white/10 p-8 rounded-sm">
+                    <div className="flex items-center gap-4 mb-8 pb-4 border-b border-white/20">
+                      <span className="text-3xl font-mono font-bold text-white">01</span>
+                      <h4 className="text-xl md:text-2xl font-mono font-bold text-white uppercase tracking-wide">
+                        {getTranslation(language, 'aboutSkillsTitle')}
+                      </h4>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       {[1,2,3,4,5,6].map((i) => (
-                        <li key={i} className="flex items-center gap-3 text-base text-gray-300">
-                          <span className="text-sm text-gray-600 font-mono">0{i}.</span>
-                          {getTranslation(language, `aboutSkill${i}`)}
-                        </li>
+                        <div key={i} className="flex items-start gap-4 p-4 border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-colors duration-200">
+                          <span className="text-lg font-mono text-white/40 font-bold min-w-[2rem]">0{i}</span>
+                          <span className="text-lg text-gray-200 leading-relaxed" dangerouslySetInnerHTML={{ __html: getTranslation(language, `aboutSkill${i}`) }} />
+                        </div>
                       ))}
-                    </ul>
+                    </div>
                   </div>
 
-                  {/* Soft Skills */}
-                  <div className="border border-white/10 p-6">
-                    <h4 className="text-lg font-bold mb-6 pb-3 border-b border-white/10">
-                      {getTranslation(language, 'aboutSoftSkillsTitle')}
-                    </h4>
-                    <ul className="space-y-3">
+                  {/* Soft Skills - Full Width with Enhanced Design */}
+                  <div className="bg-gradient-to-r from-white/5 to-transparent border border-white/10 p-8 rounded-sm">
+                    <div className="flex items-center gap-4 mb-8 pb-4 border-b border-white/20">
+                      <span className="text-3xl font-mono font-bold text-white">02</span>
+                      <h4 className="text-xl md:text-2xl font-mono font-bold text-white uppercase tracking-wide">
+                        {getTranslation(language, 'aboutSoftSkillsTitle')}
+                      </h4>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       {[1,2,3,4,5,6].map((i) => (
-                        <li key={i} className="flex items-center gap-3 text-base text-gray-300">
-                          <span className="text-sm text-gray-600 font-mono">0{i}.</span>
-                          {getTranslation(language, `aboutSoftSkill${i}`)}
-                        </li>
+                        <div key={i} className="flex items-start gap-4 p-4 border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-colors duration-200">
+                          <span className="text-lg font-mono text-white/40 font-bold min-w-[2rem]">0{i}</span>
+                          <span className="text-lg text-gray-200 leading-relaxed" dangerouslySetInnerHTML={{ __html: getTranslation(language, `aboutSoftSkill${i}`) }} />
+                        </div>
                       ))}
-                    </ul>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -242,17 +249,27 @@ export default function AboutPage() {
                 
                 <div className="space-y-6">
                   <div className="flex flex-col md:flex-row md:justify-between md:items-baseline py-4 border-b border-white/10 group">
-                    <h4 className="text-xl font-bold text-gray-200 group-hover:text-white transition-colors">
+                    <a 
+                      href="https://estudos.udc.es/es/study/detail/4555v01"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xl font-bold text-gray-200 group-hover:text-white transition-colors hover:underline"
+                    >
                       {getTranslation(language, 'aboutEducation1')}
-                    </h4>
+                    </a>
                     <span className="text-sm font-mono text-gray-500 mt-2 md:mt-0">
                       {getTranslation(language, 'aboutEducation1Date')}
                     </span>
                   </div>
                   <div className="flex flex-col md:flex-row md:justify-between md:items-baseline py-4 border-b border-white/10 group">
-                    <h4 className="text-xl font-bold text-gray-200 group-hover:text-white transition-colors">
+                    <a 
+                      href="https://estudos.udc.es/es/study/detail/771g01v01"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xl font-bold text-gray-200 group-hover:text-white transition-colors hover:underline"
+                    >
                       {getTranslation(language, 'aboutEducation2')}
-                    </h4>
+                    </a>
                     <span className="text-sm font-mono text-gray-500 mt-2 md:mt-0">
                       {getTranslation(language, 'aboutEducation2Date')}
                     </span>
@@ -288,8 +305,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Tech Stack - Importado sin cambios */}
-      <TechStack />
+      {/* Tech Stack HUD - Iron Man Style */}
+      <TechStackHUD />
 
       {/* Continuous Learning - Importado sin cambios */}
       <ContinuousLearning />
