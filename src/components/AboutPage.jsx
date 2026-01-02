@@ -8,6 +8,38 @@ import Contact from './Contact';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import HoverFocusOverlay from './HoverFocusOverlay';
 
+// Componente de sección colapsable para móvil
+const CollapsibleSection = ({ number, title, children, defaultOpen = false }) => {
+  const [isOpen, setIsOpen] = useState(defaultOpen);
+  
+  return (
+    <div data-reveal className="mb-8 lg:mb-0">
+      {/* Header clickeable en móvil */}
+      <div 
+        className="flex items-center justify-between gap-4 mb-6 pb-4 border-b border-white/10 cursor-pointer lg:cursor-default"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <div className="flex items-center gap-4">
+          <span className="text-3xl font-bold text-white">{number}</span>
+          <span className="text-sm font-mono text-gray-400 tracking-[0.2em] uppercase">
+            {title}
+          </span>
+        </div>
+        {/* Chevron solo en móvil */}
+        <div className={`lg:hidden transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#666" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="6,9 12,15 18,9"></polyline>
+          </svg>
+        </div>
+      </div>
+      {/* Contenido: colapsable en móvil, siempre visible en desktop */}
+      <div className={`overflow-hidden transition-all duration-500 lg:!max-h-none lg:!opacity-100 ${isOpen ? 'max-h-[5000px] opacity-100' : 'max-h-0 opacity-0 lg:max-h-none lg:opacity-100'}`}>
+        {children}
+      </div>
+    </div>
+  );
+};
+
 export default function AboutPage() {
   const { language } = useLanguage();
   const [isPhotoHovered, setIsPhotoHovered] = useState(false);
@@ -118,35 +150,30 @@ export default function AboutPage() {
             </div>
 
             {/* Columna Derecha: Contenido Principal */}
-            <div className="space-y-16">
+            <div className="space-y-16 lg:space-y-16">
               
               {/* SEC 01: BIO */}
-              <div data-reveal>
-                <div className="flex items-center gap-4 mb-6 pb-4 border-b border-white/10">
-                  <span className="text-3xl font-bold text-white">01</span>
-                  <span className="text-sm font-mono text-gray-400 tracking-[0.2em] uppercase">
-                    {language === 'en' ? 'OVERVIEW' : 'RESUMEN'}
-                  </span>
-                </div>
-                <h2 className="text-3xl md:text-4xl font-bold mb-8 tracking-tight leading-tight">
+              <CollapsibleSection 
+                number="01" 
+                title={language === 'en' ? 'OVERVIEW' : 'RESUMEN'}
+                defaultOpen={true}
+              >
+                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6 lg:mb-8 tracking-tight leading-tight">
                   {getTranslation(language, 'aboutBioTitle')}
                 </h2>
-                <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
+                <p className="text-base md:text-lg lg:text-xl text-gray-300 leading-relaxed">
                   {getTranslation(language, 'aboutBioContent')}
                 </p>
-              </div>
+              </CollapsibleSection>
 
               {/* SEC 02: EXPERIENCIA */}
-              <div data-reveal>
-                <div className="flex items-center gap-4 mb-6 pb-4 border-b border-white/10">
-                  <span className="text-3xl font-bold text-white">02</span>
-                  <span className="text-sm font-mono text-gray-400 tracking-[0.2em] uppercase">
-                    {getTranslation(language, 'aboutExperienceTitle')}
-                  </span>
-                </div>
-                
+              <CollapsibleSection 
+                number="02" 
+                title={getTranslation(language, 'aboutExperienceTitle')}
+                defaultOpen={false}
+              >
                 {/* Bloque de experiencia destacado */}
-                <div className="border-l-2 border-white/30 pl-8 py-4 relative">
+                <div className="border-l-2 border-white/30 pl-4 md:pl-8 py-4 relative">
                   
                   {/* Logo Navantia en el margen derecho - Aumentado y más alejado */}
                   <div className="hidden lg:block absolute -right-[500px] xl:-right-[400px] top-5 w-80 xl:w-96">
@@ -160,7 +187,7 @@ export default function AboutPage() {
                   </div>
                   
                   <div className="flex flex-col md:flex-row md:items-baseline md:justify-between mb-4">
-                    <h3 className="text-2xl md:text-3xl font-bold text-white">
+                    <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-white">
                       {getTranslation(language, 'aboutCompany')}
                     </h3>
                     <span className="text-sm font-mono text-gray-500 uppercase tracking-widest mt-2 md:mt-0">
@@ -168,92 +195,86 @@ export default function AboutPage() {
                     </span>
                   </div>
                   
-                  <p className="text-lg text-gray-400 mb-2 font-medium">
+                  <p className="text-base lg:text-lg text-gray-400 mb-2 font-medium">
                     {getTranslation(language, 'aboutCompanyRole')}
                   </p>
                   
-                  <div className="text-base text-gray-400 leading-relaxed space-y-4 mt-6">
+                  <div className="text-sm md:text-base text-gray-400 leading-relaxed space-y-4 mt-6">
                     <p dangerouslySetInnerHTML={{ __html: getTranslation(language, 'aboutCompanyDesc1') }} />
                   </div>
                   
                   {/* Proyecto destacado */}
-                  <div className="mt-8 bg-white/5 p-6 border-l-2 border-white/50">
+                  <div className="mt-8 bg-white/5 p-4 md:p-6 border-l-2 border-white/50">
                     <span className="text-xs font-mono text-gray-500 tracking-[0.2em] uppercase block mb-3">
                       PROJECT_HIGHLIGHT
                     </span>
-                    <h4 className="text-xl font-bold text-white mb-3">
+                    <h4 className="text-lg md:text-xl font-bold text-white mb-3">
                       {getTranslation(language, 'aboutProjectTitle')}
                     </h4>
-                    <p className="text-base text-gray-400" dangerouslySetInnerHTML={{ __html: getTranslation(language, 'aboutProjectDesc') }} />
+                    <p className="text-sm md:text-base text-gray-400" dangerouslySetInnerHTML={{ __html: getTranslation(language, 'aboutProjectDesc') }} />
                   </div>
                 </div>
-              </div>
+              </CollapsibleSection>
 
               {/* SEC 03: COMPETENCIES - REDESIGNED WITH MORE PROMINENCE */}
-              <div data-reveal className="my-16">
-                <div className="flex items-center gap-4 mb-6 pb-4 border-b border-white/10">
-                  <span className="text-3xl font-bold text-white">03</span>
-                  <span className="text-sm font-mono text-gray-400 tracking-[0.2em] uppercase">
-                    {language === 'en' ? 'COMPETENCIES' : 'COMPETENCIAS'}
-                  </span>
-                </div>
-                
+              <CollapsibleSection 
+                number="03" 
+                title={language === 'en' ? 'COMPETENCIES' : 'COMPETENCIAS'}
+                defaultOpen={false}
+              >
                 {/* Enhanced Grid Layout */}
-                <div className="space-y-12">
+                <div className="space-y-8 lg:space-y-12">
                   {/* Technical Skills - Full Width with Enhanced Design */}
-                  <div className="bg-gradient-to-r from-white/5 to-transparent border border-white/10 p-8 rounded-sm">
-                    <div className="flex items-center gap-4 mb-8 pb-4 border-b border-white/20">
-                      <span className="text-3xl font-mono font-bold text-white">01</span>
-                      <h4 className="text-xl md:text-2xl font-mono font-bold text-white uppercase tracking-wide">
+                  <div className="bg-gradient-to-r from-white/5 to-transparent border border-white/10 p-4 md:p-6 lg:p-8 rounded-sm">
+                    <div className="flex items-center gap-4 mb-6 lg:mb-8 pb-4 border-b border-white/20">
+                      <span className="text-2xl lg:text-3xl font-mono font-bold text-white">01</span>
+                      <h4 className="text-lg md:text-xl lg:text-2xl font-mono font-bold text-white uppercase tracking-wide">
                         {getTranslation(language, 'aboutSkillsTitle')}
                       </h4>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
                       {[1,2,3,4,5,6].map((i) => (
-                        <div key={i} className="flex items-start gap-4 p-4 border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-colors duration-200">
-                          <span className="text-lg font-mono text-white/40 font-bold min-w-[2rem]">0{i}</span>
-                          <span className="text-lg text-gray-200 leading-relaxed" dangerouslySetInnerHTML={{ __html: getTranslation(language, `aboutSkill${i}`) }} />
+                        <div key={i} className="flex items-start gap-3 md:gap-4 p-3 md:p-4 border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-colors duration-200">
+                          <span className="text-base lg:text-lg font-mono text-white/40 font-bold min-w-[2rem]">0{i}</span>
+                          <span className="text-base lg:text-lg text-gray-200 leading-relaxed" dangerouslySetInnerHTML={{ __html: getTranslation(language, `aboutSkill${i}`) }} />
                         </div>
                       ))}
                     </div>
                   </div>
 
                   {/* Soft Skills - Full Width with Enhanced Design */}
-                  <div className="bg-gradient-to-r from-white/5 to-transparent border border-white/10 p-8 rounded-sm">
-                    <div className="flex items-center gap-4 mb-8 pb-4 border-b border-white/20">
-                      <span className="text-3xl font-mono font-bold text-white">02</span>
-                      <h4 className="text-xl md:text-2xl font-mono font-bold text-white uppercase tracking-wide">
+                  <div className="bg-gradient-to-r from-white/5 to-transparent border border-white/10 p-4 md:p-6 lg:p-8 rounded-sm">
+                    <div className="flex items-center gap-4 mb-6 lg:mb-8 pb-4 border-b border-white/20">
+                      <span className="text-2xl lg:text-3xl font-mono font-bold text-white">02</span>
+                      <h4 className="text-lg md:text-xl lg:text-2xl font-mono font-bold text-white uppercase tracking-wide">
                         {getTranslation(language, 'aboutSoftSkillsTitle')}
                       </h4>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
                       {[1,2,3,4,5,6].map((i) => (
-                        <div key={i} className="flex items-start gap-4 p-4 border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-colors duration-200">
-                          <span className="text-lg font-mono text-white/40 font-bold min-w-[2rem]">0{i}</span>
-                          <span className="text-lg text-gray-200 leading-relaxed" dangerouslySetInnerHTML={{ __html: getTranslation(language, `aboutSoftSkill${i}`) }} />
+                        <div key={i} className="flex items-start gap-3 md:gap-4 p-3 md:p-4 border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-colors duration-200">
+                          <span className="text-base lg:text-lg font-mono text-white/40 font-bold min-w-[2rem]">0{i}</span>
+                          <span className="text-base lg:text-lg text-gray-200 leading-relaxed" dangerouslySetInnerHTML={{ __html: getTranslation(language, `aboutSoftSkill${i}`) }} />
                         </div>
                       ))}
                     </div>
                   </div>
                 </div>
-              </div>
+              </CollapsibleSection>
 
               {/* SEC 04: EDUCACIÓN */}
-              <div data-reveal>
-                <div className="flex items-center gap-4 mb-6 pb-4 border-b border-white/10">
-                  <span className="text-3xl font-bold text-white">04</span>
-                  <span className="text-sm font-mono text-gray-400 tracking-[0.2em] uppercase">
-                    {getTranslation(language, 'aboutEducationTitle')}
-                  </span>
-                </div>
-                
-                <div className="space-y-6">
+              <CollapsibleSection 
+                number="04" 
+                title={getTranslation(language, 'aboutEducationTitle')}
+                defaultOpen={false}
+              >
+                <div className="space-y-4 lg:space-y-6">
                   <div className="flex flex-col md:flex-row md:justify-between md:items-baseline py-4 border-b border-white/10 group">
                     <a 
                       href="https://estudos.udc.es/es/study/detail/4555v01"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-xl font-bold text-gray-200 group-hover:text-white transition-colors hover:underline"
+                      className="text-lg md:text-xl font-bold text-gray-200 group-hover:text-white transition-colors hover:underline"
                     >
                       {getTranslation(language, 'aboutEducation1')}
                     </a>
@@ -266,7 +287,7 @@ export default function AboutPage() {
                       href="https://estudos.udc.es/es/study/detail/771g01v01"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-xl font-bold text-gray-200 group-hover:text-white transition-colors hover:underline"
+                      className="text-lg md:text-xl font-bold text-gray-200 group-hover:text-white transition-colors hover:underline"
                     >
                       {getTranslation(language, 'aboutEducation2')}
                     </a>
@@ -275,23 +296,20 @@ export default function AboutPage() {
                     </span>
                   </div>
                 </div>
-              </div>
+              </CollapsibleSection>
 
               {/* SEC 05: PREMIOS Y RECONOCIMIENTOS */}
-              <div data-reveal>
-                <div className="flex items-center gap-4 mb-6 pb-4 border-b border-white/10">
-                  <span className="text-3xl font-bold text-white">05</span>
-                  <span className="text-sm font-mono text-gray-400 tracking-[0.2em] uppercase">
-                    {getTranslation(language, 'aboutAwardsTitle')}
-                  </span>
-                </div>
-                
-                <div className="border border-white/10 p-6">
+              <CollapsibleSection 
+                number="05" 
+                title={getTranslation(language, 'aboutAwardsTitle')}
+                defaultOpen={false}
+              >
+                <div className="border border-white/10 p-4 md:p-6">
                   <div className="flex flex-col space-y-4">
-                    <h4 className="text-xl font-bold text-gray-200 group-hover:text-white transition-colors">
+                    <h4 className="text-lg md:text-xl font-bold text-gray-200 group-hover:text-white transition-colors">
                       {getTranslation(language, 'aboutAward1Title')}
                     </h4>
-                    <p className="text-base text-gray-400 leading-relaxed">
+                    <p className="text-sm md:text-base text-gray-400 leading-relaxed">
                       {getTranslation(language, 'aboutAward1Description')}
                     </p>
                     <span className="text-sm font-mono text-gray-500">
@@ -299,7 +317,7 @@ export default function AboutPage() {
                     </span>
                   </div>
                 </div>
-              </div>
+              </CollapsibleSection>
             </div>
           </div>
         </div>

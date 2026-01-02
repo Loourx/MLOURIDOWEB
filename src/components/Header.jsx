@@ -72,10 +72,10 @@ export default function Header() {
   };
 
   const menuItems = [
-    { label: getTranslation(language, 'work'), action: () => handleScrollToSection('work') },
-    { label: getTranslation(language, 'about'), action: handleAboutClick },
-    { label: getTranslation(language, 'contact'), action: () => handleScrollToSection('contact') },
-    { label: getTranslation(language, 'extra'), action: handleExtraClick },
+    { id: 'work', label: getTranslation(language, 'work'), action: () => handleScrollToSection('work') },
+    { id: 'about', label: getTranslation(language, 'about'), action: handleAboutClick },
+    { id: 'contact', label: getTranslation(language, 'contact'), action: () => handleScrollToSection('contact') },
+    { id: 'extra', label: getTranslation(language, 'extra'), action: handleExtraClick },
   ];
 
   return (
@@ -106,9 +106,9 @@ export default function Header() {
           {/* Navegación Desktop */}
           <nav className="hidden md:flex gap-10">
           {menuItems.map((item) => (
-            item.label === 'Extra' ? (
+            item.id === 'extra' ? (
               <Link 
-                key={item.label}
+                key={item.id}
                 to="/extra"
                 className="font-mono text-base font-medium text-gray-500 hover:text-black transition-colors tracking-wide"
               >
@@ -116,7 +116,7 @@ export default function Header() {
               </Link>
             ) : (
               <button 
-                key={item.label}
+                key={item.id}
                 onClick={item.action}
                 className="font-mono text-base font-medium text-gray-500 hover:text-black transition-colors tracking-wide bg-transparent border-none p-0 cursor-pointer"
               >
@@ -164,28 +164,28 @@ export default function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden border-t"
+            className="md:hidden border-t w-full"
             style={{
               backgroundColor: 'rgba(255, 255, 255, 0.95)',
               borderColor: 'rgb(243, 243, 245)',
             }}
           >
-            <nav className="flex flex-col px-4 md:px-6 py-4 gap-4">
+            <nav className="flex flex-col px-6 py-4 gap-4">
               {menuItems.map((item) => (
-                item.label === 'Extra' ? (
+                item.id === 'extra' ? (
                   <Link 
-                    key={item.label}
+                    key={item.id}
                     to="/extra"
                     onClick={() => setIsMenuOpen(false)}
-                    className="font-mono text-sm font-medium text-gray-500 hover:text-black transition-colors py-2.5"
+                    className="font-mono text-sm font-medium text-gray-500 hover:text-black transition-colors py-2.5 px-0 text-left"
                   >
                     {item.label}
                   </Link>
                 ) : (
                   <button 
-                    key={item.label}
+                    key={item.id}
                     onClick={item.action}
-                    className="font-mono text-sm font-medium text-gray-500 hover:text-black transition-colors py-2.5 bg-transparent border-none text-left cursor-pointer"
+                    className="font-mono text-sm font-medium text-gray-500 hover:text-black transition-colors py-2.5 px-0 bg-transparent border-none text-left cursor-pointer"
                   >
                     {item.label}
                   </button>
@@ -195,7 +195,7 @@ export default function Header() {
               {/* Language Switcher Mobile */}
               <button
                 onClick={toggleLanguage}
-                className="md:hidden w-full flex items-center justify-center gap-2 font-mono text-sm font-medium text-white bg-[#111111] border border-[#111111] rounded-md py-3 cursor-pointer tracking-wide mt-3 hover:bg-black transition-all"
+                className="w-full flex items-center justify-center gap-2 font-mono text-sm font-medium text-white bg-[#111111] border border-[#111111] rounded-md py-3 cursor-pointer tracking-wide mt-3 hover:bg-black transition-all"
               >
                 <Globe size={16} />
                 <span>{language === 'en' ? 'ESPAÑOL' : 'ENGLISH'}</span>

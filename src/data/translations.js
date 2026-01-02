@@ -28,6 +28,11 @@ export const translations = {
     // Project Titles (only for non-brand names)
     projectTitleUrbanFurniture: 'URBAN FURNITURE',
     
+    // Coming Soon Card
+    comingSoonLoading: '// LOADING',
+    comingSoonTitle: 'COMING SOON',
+    comingSoonTag: '[COMING SOON] // 2025',
+    
     // About
     aboutNumber: '[02]',
     aboutTitle: 'About Me',
@@ -196,7 +201,12 @@ export const translations = {
     projectProduct: 'PRODUCTO',
     projectBusinessStrategy: 'ESTRATEGIA EMPRESARIAL',    
     // Project Titles (only for non-brand names)
-    projectTitleUrbanFurniture: 'MOBILIARIO URBANO',    
+    projectTitleUrbanFurniture: 'MOBILIARIO URBANO',
+    
+    // Coming Soon Card
+    comingSoonLoading: '// CARGANDO',
+    comingSoonTitle: 'PRÓXIMAMENTE',
+    comingSoonTag: '[PRÓXIMAMENTE] // 2025',    
     // About
     aboutNumber: '[02]',
     aboutTitle: 'Sobre mí',

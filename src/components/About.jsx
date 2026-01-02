@@ -6,7 +6,7 @@ import HoverFocusOverlay from './HoverFocusOverlay';
 export default function About() {
   const { language } = useLanguage();
   return (
-    <section id="about" className="py-16 md:py-24 px-4 md:px-12 bg-black text-white border-t border-white/10 overflow-x-hidden">
+    <section id="about" className="py-16 md:py-24 px-6 md:px-12 bg-black text-white border-t border-white/10 overflow-x-hidden">
       <div className="max-w-7xl mx-auto w-full">
         
         {/* Header técnico estilo ficha */}
@@ -23,7 +23,7 @@ export default function About() {
         <div className="md:grid md:grid-cols-[0.4fr,0.6fr] md:gap-12 lg:gap-16 gap-8">
           
           {/* --- COLUMNA IZQUIERDA: ID Card Style --- */}
-          <div className="mb-8 md:mb-0">
+          <div className="mb-8 md:mb-0 mx-auto md:mx-0 max-w-[280px] md:max-w-none">
             {/* Contenedor tipo ID card */}
             <div className="border border-white/20 p-1">
               {/* Foto con marco técnico - Aumentada */}
@@ -31,7 +31,7 @@ export default function About() {
                 <div
                   data-reveal
                   data-reveal-delay="80ms"
-                  className="aspect-[3/4] w-full min-h-[50vh] md:min-h-[60vh] lg:min-h-[70vh] bg-neutral-900 overflow-hidden relative"
+                  className="aspect-[3/4] w-full min-h-[40vh] md:min-h-[60vh] lg:min-h-[70vh] bg-neutral-900 overflow-hidden relative"
                 >
                   {/* Marcas de registro en esquinas */}
                   <div className="absolute top-2 left-2 w-4 h-4 border-l border-t border-white/30 z-10"></div>

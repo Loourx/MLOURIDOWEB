@@ -9,7 +9,7 @@ export default function ExtraPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white overflow-x-hidden">
       <Header />
       <main className="pt-24 pb-20">
         {/* Hero Section - Industrial Raw */}

@@ -76,17 +76,17 @@ export default function ContinuousLearning() {
         </h2>
         
         {/* Stats bar */}
-        <div className="flex items-center gap-6 mb-12 text-[10px] font-mono text-gray-600">
+        <div className="flex flex-wrap items-center gap-4 md:gap-6 mb-12 text-[10px] font-mono text-gray-600">
           <div className="flex items-center gap-2">
             <span className="text-gray-700">TOTAL_HOURS:</span>
             <span className="text-white">{totalHours}H</span>
           </div>
-          <span className="text-gray-800">|</span>
+          <span className="text-gray-800 hidden sm:inline">|</span>
           <div className="flex items-center gap-2">
             <span className="text-gray-700">PERIOD:</span>
             <span className="text-white">2023-2025</span>
           </div>
-          <span className="text-gray-800">|</span>
+          <span className="text-gray-800 hidden sm:inline">|</span>
           <div className="flex items-center gap-2">
             <span className="w-1.5 h-1.5 bg-green-500 rounded-full"></span>
             <span className="text-green-400/80">ACTIVE</span>
@@ -118,9 +118,9 @@ export default function ContinuousLearning() {
             >
               <div className="grid grid-cols-1 md:grid-cols-[140px,1fr,100px,80px] gap-2 md:gap-4 px-4 py-5 items-start">
                 
-                {/* Logo - Marco rectangular con imagen */}
-                <div className="hidden md:flex justify-center items-start pt-1">
-                  <div className="w-32 h-16 border border-white/20 p-1 flex items-center justify-center bg-neutral-900">
+                {/* Logo - Visible en móvil también */}
+                <div className="flex justify-start md:justify-center items-center mb-3 md:mb-0 pt-1">
+                  <div className="w-24 h-12 md:w-32 md:h-16 border border-white/20 p-1 flex items-center justify-center bg-neutral-900">
                     <img 
                       src={item.image}
                       alt={`${organization} logo`}

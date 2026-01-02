@@ -765,45 +765,11 @@ export const projectsData = {
     ],
 
     nextProject: {
-      slug: "sosterra",
-      title: "SOSTERRA",
-      tag: "Business Strategy",
-    },
-  },
-
-  sosterra: {
-    slug: "sosterra",
-    title: "SOSTERRA",
-    category: "Estrategia de Negocio & Branding",
-    categoryEn: "Business Strategy & Branding",
-    year: "2024",
-    
-    hero: {
-      image: "/images/projects/sosterra-hero.jpg",
-      role: "Strategy & Brand",
-      client: "SOSTERRA",
-    },
-
-    sections: [
-      {
-        id: "intro",
-        phase: "00",
-        title: "Introducción",
-        titleEn: "Introduction",
-        type: "text-only",
-        content: {
-          hook: "Posicionamiento de marca para una startup de sostenibilidad ambiental.",
-          hookEn: "Brand positioning for an environmental sustainability startup.",
-          description: "Research estratégico, arquetipos de marca y ecosistema visual completo.",
-          descriptionEn: "Strategic research, brand archetypes and complete visual ecosystem.",
-        }
-      },
-    ],
-
-    nextProject: {
       slug: "cupra",
       title: "CUPRA K2",
-      tag: "Automotive Design",
+      titleEn: "CUPRA K2",
+      tag: "Automoción",
+      tagEn: "Automotive",
     },
   },
 };

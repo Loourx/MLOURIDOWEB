@@ -569,85 +569,129 @@ const Network3D = ({ isHovered, isActive, color }) => {
 // ═══════════════════════════════════════════════════════════════════════════
 // COMPONENTE: BARRA TRANSVERSAL DE ESTRATEGIA
 // ═══════════════════════════════════════════════════════════════════════════
-const StrategyBar = ({ phase, isHovered, onHover, onOpenModal, language }) => {
+const StrategyBar = ({ phase, isHovered, onHover, onOpenModal, language, isExpanded, onToggle }) => {
   const { color, colorMuted, colorRGB, tools, title, subtitle } = phase;
   
+  // En móvil expandimos, en desktop abrimos modal
+  const handleClick = () => {
+    if (window.innerWidth >= 1024) {
+      onOpenModal();
+    } else {
+      onToggle();
+    }
+  };
+  
   return (
-    <div
-      className="relative border rounded-lg overflow-hidden transition-all duration-500 cursor-pointer group"
-      style={{
-        borderColor: isHovered ? `${color}60` : 'rgba(255,255,255,0.1)',
-        backgroundColor: isHovered ? `${color}08` : 'rgba(255,255,255,0.02)',
-      }}
-      onMouseEnter={() => onHover(true)}
-      onMouseLeave={() => onHover(false)}
-      onClick={onOpenModal}
-    >
-      {/* Background pattern */}
-      <div className="absolute inset-0 opacity-5" style={{
-        backgroundImage: `
-          linear-gradient(90deg, ${color}20 1px, transparent 1px),
-          linear-gradient(${color}20 1px, transparent 1px)
-        `,
-        backgroundSize: '20px 20px'
-      }}></div>
-      
-      {/* Scanning line */}
-      {isHovered && (
-        <div 
-          className="absolute top-0 left-0 w-full h-0.5 animate-[scanVertical_2s_ease-in-out_infinite]" 
-          style={{ background: `linear-gradient(90deg, transparent, ${color}, transparent)` }}
-        ></div>
-      )}
-      
-      <div className="relative z-10 p-6 md:p-8">
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
-          {/* Left: Icon + Title */}
-          <div className="flex items-center gap-6">
-            {/* Mini Network Icon */}
-            <div className="w-16 h-16 flex-shrink-0">
-              <Network3D isHovered={isHovered} isActive={false} color={isHovered ? color : colorMuted} />
+    <div className="relative">
+      <div
+        className="relative border rounded-lg overflow-hidden transition-all duration-500 cursor-pointer group"
+        style={{
+          borderColor: isHovered ? `${color}60` : 'rgba(255,255,255,0.1)',
+          backgroundColor: isHovered ? `${color}08` : 'rgba(255,255,255,0.02)',
+        }}
+        onMouseEnter={() => onHover(true)}
+        onMouseLeave={() => onHover(false)}
+        onClick={handleClick}
+      >
+        {/* Background pattern */}
+        <div className="absolute inset-0 opacity-5" style={{
+          backgroundImage: `
+            linear-gradient(90deg, ${color}20 1px, transparent 1px),
+            linear-gradient(${color}20 1px, transparent 1px)
+          `,
+          backgroundSize: '20px 20px'
+        }}></div>
+        
+        {/* Scanning line */}
+        {isHovered && (
+          <div 
+            className="absolute top-0 left-0 w-full h-0.5 animate-[scanVertical_2s_ease-in-out_infinite]" 
+            style={{ background: `linear-gradient(90deg, transparent, ${color}, transparent)` }}
+          ></div>
+        )}
+        
+        <div className="relative z-10 p-6 md:p-8">
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+            {/* Left: Icon + Title */}
+            <div className="flex items-center gap-6">
+              {/* Mini Network Icon */}
+              <div className="w-16 h-16 flex-shrink-0">
+                <Network3D isHovered={isHovered} isActive={false} color={isHovered ? color : colorMuted} />
+              </div>
+              
+              <div>
+                <div className="flex items-center gap-3 mb-1">
+                  <span className="text-xs font-mono tracking-widest" style={{ color: isHovered ? color : colorMuted }}>04</span>
+                  <div className="w-8 h-px" style={{ backgroundColor: isHovered ? color : colorMuted }}></div>
+                  <span className="text-xs font-mono text-gray-500 uppercase tracking-wider">TRANSVERSAL</span>
+                </div>
+                <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight">{title}</h3>
+                <p className="text-sm text-gray-400 mt-1">{subtitle}</p>
+              </div>
             </div>
             
-            <div>
-              <div className="flex items-center gap-3 mb-1">
-                <span className="text-xs font-mono tracking-widest" style={{ color: isHovered ? color : colorMuted }}>04</span>
-                <div className="w-8 h-px" style={{ backgroundColor: isHovered ? color : colorMuted }}></div>
-                <span className="text-xs font-mono text-gray-500 uppercase tracking-wider">TRANSVERSAL</span>
+            {/* Center: Description - Solo en desktop */}
+            <div className="flex-1 max-w-2xl hidden lg:block">
+              <p className="text-sm md:text-base text-gray-400 leading-relaxed">
+                {language === 'en' 
+                  ? 'Methodologies and frameworks for project viability, financial planning, and strategic business development. From ideation to industrialization.'
+                  : 'Metodologías y frameworks para la viabilidad del proyecto, planificación financiera y desarrollo estratégico del negocio. Desde la ideación hasta la industrialización.'
+                }
+              </p>
+            </div>
+            
+            {/* Right: CTA */}
+            <div className="flex items-center gap-4">
+              <div className="text-right hidden sm:block">
+                <span className="text-xs font-mono text-gray-500 block">{tools.length} {language === 'en' ? 'methods' : 'métodos'}</span>
+                <span className="text-[10px] font-mono text-gray-600 uppercase hidden lg:block">{language === 'en' ? 'Click to explore' : 'Clic para explorar'}</span>
+                <span className="text-[10px] font-mono text-gray-600 uppercase lg:hidden">{isExpanded ? (language === 'en' ? 'Tap to close' : 'Toca para cerrar') : (language === 'en' ? 'Tap to expand' : 'Toca para expandir')}</span>
               </div>
-              <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight">{title}</h3>
-              <p className="text-sm text-gray-400 mt-1">{subtitle}</p>
+              
+              {/* Desktop: Expand icon */}
+              <div 
+                className="hidden lg:flex w-12 h-12 rounded-full border-2 items-center justify-center transition-all duration-300 group-hover:scale-110"
+                style={{ 
+                  borderColor: isHovered ? color : 'rgba(255,255,255,0.2)',
+                  backgroundColor: isHovered ? `${color}20` : 'transparent'
+                }}
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={isHovered ? color : '#666'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </div>
+              
+              {/* Mobile: Chevron */}
+              <div className={`lg:hidden transition-transform duration-300 ${isExpanded ? 'rotate-180' : ''}`}>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke={isHovered ? color : '#666'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="6,9 12,15 18,9"></polyline>
+                </svg>
+              </div>
             </div>
           </div>
-          
-          {/* Center: Description */}
-          <div className="flex-1 max-w-2xl">
-            <p className="text-sm md:text-base text-gray-400 leading-relaxed">
-              {language === 'en' 
-                ? 'Methodologies and frameworks for project viability, financial planning, and strategic business development. From ideation to industrialization.'
-                : 'Metodologías y frameworks para la viabilidad del proyecto, planificación financiera y desarrollo estratégico del negocio. Desde la ideación hasta la industrialización.'
-              }
-            </p>
+        </div>
+      </div>
+      
+      {/* Panel expandido con herramientas - SOLO MÓVIL */}
+      <div className={`lg:hidden overflow-hidden transition-all duration-500 ${isExpanded ? 'max-h-[3000px] opacity-100 mt-4' : 'max-h-0 opacity-0'}`}>
+        <div className="p-6 rounded-xl border" style={{ borderColor: `${color}30`, backgroundColor: `${color}05` }}>
+          {/* Header del panel */}
+          <div className="flex items-center justify-between mb-6 pb-4 border-b" style={{ borderColor: `${color}20` }}>
+            <div className="flex items-center gap-3">
+              <div className="w-3 h-3 rounded-full animate-pulse" style={{ backgroundColor: color }}></div>
+              <span className="text-sm font-mono uppercase tracking-wider" style={{ color }}>
+                {language === 'en' ? 'Active Methods' : 'Métodos Activos'}
+              </span>
+            </div>
+            <span className="text-xs font-mono text-gray-500">{tools.length} LOADED</span>
           </div>
           
-          {/* Right: CTA */}
-          <div className="flex items-center gap-4">
-            <div className="text-right hidden sm:block">
-              <span className="text-xs font-mono text-gray-500 block">{tools.length} {language === 'en' ? 'methods' : 'métodos'}</span>
-              <span className="text-[10px] font-mono text-gray-600 uppercase">{language === 'en' ? 'Click to explore' : 'Clic para explorar'}</span>
-            </div>
-            <div 
-              className="w-12 h-12 rounded-full border-2 flex items-center justify-center transition-all duration-300 group-hover:scale-110"
-              style={{ 
-                borderColor: isHovered ? color : 'rgba(255,255,255,0.2)',
-                backgroundColor: isHovered ? `${color}20` : 'transparent'
-              }}
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={isHovered ? color : '#666'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </div>
+          {/* Grid de herramientas */}
+          <div className="grid grid-cols-1 gap-4">
+            {tools.map((tool, index) => (
+              <ToolCard key={tool.id} tool={tool} color={color} index={index} hideLevel={true} />
+            ))}
           </div>
         </div>
       </div>
@@ -1044,6 +1088,7 @@ export default function TechStackHUD() {
   const [expandedPhase, setExpandedPhase] = useState(null);
   const [hoveredPhase, setHoveredPhase] = useState(null);
   const [hoveredStrategy, setHoveredStrategy] = useState(false);
+  const [strategyExpanded, setStrategyExpanded] = useState(false);
   const [modalPhaseId, setModalPhaseId] = useState(null); // Solo guardamos el ID, no el objeto
   const techData = getTechData(language);
   
@@ -1168,6 +1213,8 @@ export default function TechStackHUD() {
             onHover={setHoveredStrategy}
             onOpenModal={() => setModalPhaseId(strategyPhase.id)}
             language={language}
+            isExpanded={strategyExpanded}
+            onToggle={() => setStrategyExpanded(!strategyExpanded)}
           />
         </div>
         

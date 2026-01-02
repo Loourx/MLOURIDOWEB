@@ -327,20 +327,21 @@ const ClickableImage = ({ src, alt, className, title, subtitle, onOpenGallery, l
 // COMPONENTE: Sección de Fase (Header con número y subsecciones)
 // ═══════════════════════════════════════════════════════════════════════════
 const PhaseHeader = ({ phase, title, titleEn, subsections, subsectionsEn, language }) => (
-  <div data-reveal className="py-24 md:py-32 px-6 md:px-16 lg:px-24 border-b border-black/5 bg-white">
+  <div data-reveal className="py-16 md:py-24 lg:py-32 px-4 md:px-16 lg:px-24 border-b border-black/5 bg-white">
     <div className="max-w-7xl mx-auto">
-      <div className="flex items-baseline gap-6 mb-8">
-        <span className="text-7xl md:text-9xl font-mono font-bold text-black/10">
+      {/* Stack vertical en móvil, horizontal en desktop */}
+      <div className="flex flex-col md:flex-row md:items-baseline gap-3 md:gap-6 mb-6 md:mb-8">
+        <span className="text-5xl md:text-7xl lg:text-9xl font-mono font-bold text-black/10">
           {phase}
         </span>
-        <h2 className="text-3xl md:text-5xl font-mono font-bold text-black uppercase tracking-tight">
+        <h2 className="text-2xl md:text-3xl lg:text-5xl font-mono font-bold text-black uppercase tracking-tight">
           {language === 'en' ? titleEn : title}
         </h2>
       </div>
       {subsections && (
-        <div className="flex flex-wrap gap-6 mt-8">
+        <div className="flex flex-wrap gap-4 md:gap-6 mt-6 md:mt-8">
           {(language === 'en' && subsectionsEn ? subsectionsEn : subsections).map((sub, i) => (
-            <span key={i} className="text-sm font-mono text-black/40 uppercase tracking-widest">
+            <span key={i} className="text-xs md:text-sm font-mono text-black/40 uppercase tracking-widest">
               {sub}
             </span>
           ))}
